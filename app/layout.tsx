@@ -1,6 +1,7 @@
 import  Inter  from 'next/font/local';
 import './globals.css';
 import FloatingSocials from '@/components/Floatingsocials';
+import { Providers } from './provider';
 
 
 
@@ -46,8 +47,10 @@ export const metadata = {
       return (
         <html lang="en" className={`${inter.className}`} >
           <body>
+            <Providers>
             <FloatingSocials />
              {children}
+            </Providers>
           </body>
         </html>
       );

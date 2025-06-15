@@ -184,11 +184,11 @@ const handleClickOutside = useCallback((event: MouseEvent) => {
           <p className="text-sm text-gray-600 dark:text-gray-300">{card.description}</p>
         </Link>
       ))}
-    </div>
-  )}
-</li>
-    
-              ))}
+             </div>
+         )}
+        </li>
+
+        ))}
             </ul>
           </div>
           {/* Book Now Button */}
@@ -198,7 +198,9 @@ const handleClickOutside = useCallback((event: MouseEvent) => {
                transition-transform"
                aria-label='Book a Trip Now'
                >
-            <Link href='/booking'>Book Now</Link>
+            <Link href='/booking'>
+              Book Now           
+            </Link>
           </Button>
 
           {/* Country Switcher */}
