@@ -1,4 +1,4 @@
-// components/DealCard.tsx
+
 'use client';
 import Image from 'next/image';
 import { Heart } from 'lucide-react';
@@ -41,7 +41,7 @@ Stops: ${deal.stops}`;
           className={isSaved ? 'fill-red-500 text-red-500' : 'text-gray-400'} 
         />
       </button>
-      {/* Deal Image with Discount Badge */}
+      {/* deal Image and discount Badge */}
       <div className="relative h-48">
         <Image
           src={deal.image}

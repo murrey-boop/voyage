@@ -100,7 +100,7 @@ const FlightCards = ({ flights, isStudentView = false }: FlightCardsProps) => {
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-bold">{flight.arrivalTime}</p>
-                  <p className="text-gray-500 text-sm">{flight.destination}</p>
+                  <p className="text-gray-500 text-sm">{flight.detination}</p>
                 </div>
               </div>
             </div>

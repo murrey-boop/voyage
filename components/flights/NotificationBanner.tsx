@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 
-//NotificationBanner Props
 interface NotificationBannerProps {
   message: string;
   onClose?: () => void;

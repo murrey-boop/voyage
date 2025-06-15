@@ -45,7 +45,7 @@ export interface FlightFilters {
   maxDuration: number;
   onlyStudentDeals: boolean;
   [key: string]: string | number | boolean | string[] | number[] | [number, number] | undefined; // For additional filters
-  // e.g., price range, departure time, etc.
+  // e.g., price range, departure time.
   priceRange?: [number, number]; // Optional price range filter
   departureTime?: string; // Optional departure time filter
   arrivalTime?: string; // Optional arrival time filter

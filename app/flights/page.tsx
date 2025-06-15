@@ -23,7 +23,7 @@ const AIRLINE_LOGOS = {
   AF: { src: '/airlines/airfrance.jpg', width: 64, height: 64 },
   KL: { src: '/airlines/klm.jpg', width: 64, height: 64 },
   SQ: { src: '/airlines/singapore.jpg', width: 64, height: 64 },
-  default: { src: '/airlines/generic.jpg', width: 64, height: 64 }
+  default: { src: '/airlines/british-airways.jpg', width: 64, height: 64 }
 };
 
 const CITY_IMAGES = {
@@ -31,6 +31,10 @@ const CITY_IMAGES = {
   JFK: { src: '/images/new-york.jpg', width: 800, height: 600 },
   DXB: { src: '/images/dubai.jpg', width: 800, height: 600 },
   LHR: { src: '/images/london.jpg', width: 800, height: 600 },
+  UA: { src: '/images/rome.jpg', width: 800, height: 600 },
+  SQ: { src: '/images/Tokyo.jpg', width: 800, height: 600 },
+  KL: { src: '/images/cape-town.jpg', width: 800, height: 600 },
+  MO: { src: '/images/mombasa.jpg', width: 800, height: 600 },
   default: { src: '/images/city-default.jpg', width: 800, height: 600 }
 };
 
@@ -107,8 +111,72 @@ const STATIC_FLIGHTS: Flight[] = [
     height: CITY_IMAGES.DXB.height,
     flightNumber: 'EK 722'
   },
-  { 
+    { 
     id: '4', 
+    city: 'Rome', 
+    country: 'Italy', 
+    price: 600, 
+    airline: 'united', 
+    airlineLogo: AIRLINE_LOGOS.UA.src,
+    duration: '9h 30m', 
+    departureTime: '10:20', 
+    arrivalTime: '17:35', 
+    stops: 0,
+    image: CITY_IMAGES.UA.src,
+    width: CITY_IMAGES.UA.width,
+    height: CITY_IMAGES.UA.height,
+    flightNumber: 'EK 722'
+  },
+    { 
+    id: '5', 
+    city: 'tokyo', 
+    country: '', 
+    price: 600, 
+    airline: 'Emirates', 
+    airlineLogo: AIRLINE_LOGOS.EK.src,
+    duration: '7h 15m', 
+    departureTime: '10:20', 
+    arrivalTime: '17:35', 
+    stops: 0,
+    image: CITY_IMAGES.SQ.src,
+    width: CITY_IMAGES.SQ.width,
+    height: CITY_IMAGES.SQ.height,
+    flightNumber: 'EK 722'
+  },
+    { 
+    id: '6', 
+    city: 'Cape Town', 
+    country: 'South Africa', 
+    price: 600, 
+    airline: 'klm', 
+    airlineLogo: AIRLINE_LOGOS.KL.src,
+    duration: '4h 15m', 
+    departureTime: '10:20', 
+    arrivalTime: '17:35', 
+    stops: 0,
+    image: CITY_IMAGES.KL.src,
+    width: CITY_IMAGES.KL.width,
+    height: CITY_IMAGES.KL.height,
+    flightNumber: 'EK 722'
+  },
+    { 
+    id: '7', 
+    city: 'Mombasa', 
+    country: 'kenya', 
+    price: 600, 
+    airline: 'Emirates', 
+    airlineLogo: AIRLINE_LOGOS.AF.src,
+    duration: '45 m', 
+    departureTime: '9:00', 
+    arrivalTime: '9:MO', 
+    stops: 0,
+    image: CITY_IMAGES.MO.src,
+    width: CITY_IMAGES.MO.width,
+    height: CITY_IMAGES.MO.height,
+    flightNumber: 'EK 722'
+  },
+  { 
+    id: '8', 
     city: 'London', 
     country: 'UK', 
     price: 700, 

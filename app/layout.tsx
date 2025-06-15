@@ -2,6 +2,7 @@ import  Inter  from 'next/font/local';
 import './globals.css';
 import FloatingSocials from '@/components/Floatingsocials';
 import { Providers } from './provider';
+import { WishlistProvider } from '@/components/WishlistProvider';
 
 
 
@@ -48,8 +49,10 @@ export const metadata = {
         <html lang="en" className={`${inter.className}`} >
           <body>
             <Providers>
-            <FloatingSocials />
-             {children}
+              <WishlistProvider >
+                <FloatingSocials />
+                  {children}
+              </WishlistProvider>
             </Providers>
           </body>
         </html>

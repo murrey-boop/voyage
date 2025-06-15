@@ -146,7 +146,7 @@ const TourCardItem: React.FC<Props> = ({ type, data }) => {
           {type === 'tours' && <MapPin className="w-5 h-5" />}
           {type === 'flights' && <Plane className="w-5 h-5" />}
           {type === 'visas' && (
-            <Image src="/icons/passport.svg" alt="Visa Icon" width={20} height={20} />
+            <Image src="/icons/passport.png" alt="Visa Icon" width={20} height={20} />
           )}
           <h3 className="text-lg font-bold text-gray-800">{getTitle()}</h3>
         </div>

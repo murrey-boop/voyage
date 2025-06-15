@@ -1,7 +1,6 @@
-//make it realist on the search,why they set innappproriate dateilslikedates
-
 
 'use client';
+
 import { gsap } from 'gsap';
 import {useState, useRef, useEffect } from 'react';
 import { Search } from 'lucide-react';
@@ -48,7 +47,7 @@ export default function FlightHero({ onSearch }: { onSearch: (params: FlightSear
     // Search button pulse animation
     const pulseAnimation = gsap.to(searchButtonRef.current, {
       scale: 1.05,
-      duration: 1.5,
+      duration: 2.0,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"

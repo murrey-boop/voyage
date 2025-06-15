@@ -27,7 +27,7 @@ function ServicesOverview() {
             },
             {
               icon: <Image 
-                src="/images/icons/passport.svg" 
+                src="/images/icons/passport.png" 
                 alt="passport" 
                 width={32}
                 height={32}
