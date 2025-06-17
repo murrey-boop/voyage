@@ -44,7 +44,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/visa" className="hover:text-blue-300 flex items-center gap-2">
-                  <Image src='/icons/passport.svg' alt="passport link icon" width={20} height={20} /> Visas
+                  <Image src='/icons/passport.png' alt="passport link icon" width={20} height={20} /> Visas
                 </Link>
               </li>
               <li>

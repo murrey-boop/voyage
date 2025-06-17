@@ -1,15 +1,15 @@
 'use client';
 
-import { signIn } from "@auth/react";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Icons } from "lucide-react";
+import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
-
+// Schema for sign-in validation
 const signInSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
@@ -18,7 +18,7 @@ const signInSchema = z.object({
 export default function SignInPage() {
   const { register, handleSubmit } = useForm({ resolver: zodResolver(signInSchema) });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     const result = await signIn("credentials", { ...data, redirect: false });
     if (result?.ok) window.location.href = "/booking";
     else console.error("Login failed:", result.error);
@@ -36,7 +36,7 @@ export default function SignInPage() {
         <div className="flex items-center gap-2">
           <span>or sign in with Google</span>
           <Button variant="outline" onClick={() => signIn("google")}>
-            <Icons.google className="mr-2" /> Google
+            <FaGoogle className="mr-2" /> Google
           </Button>
         </div>
         <p className="text-sm">

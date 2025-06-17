@@ -46,6 +46,7 @@ export default function FloatingSocials() {
           alt="Twitter"
           width={20}
           height={20}
+          className='bg-yellow-50'
         />
       </a>
       <a

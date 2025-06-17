@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Stepper from './Stepper';
 
 export const metadata: Metadata = {
-  title: 'Fast Visa Procssing |Digital Voyaging',
+  title: 'Fast Visa Processing |Digital Voyaging',
   description: 'Begin your visa application with Digital Voyaging Travel Agency.',
 };
 

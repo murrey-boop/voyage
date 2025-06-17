@@ -1,6 +1,6 @@
 'use client';
 
-import { signUp } from "auth/react"; // only if auth.js has signUp
+//import { signUp } from "auth/react"; // only if auth.js has signUp
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,7 +18,7 @@ const signUpSchema = z.object({
 export default function SignUpPage() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(signUpSchema) });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     // Implement your own POST /api/auth/signup or use auth.js credentials flow
     await fetch("/api/auth/signup", {
       method: "POST",
@@ -45,3 +45,25 @@ export default function SignUpPage() {
     </div>
   );
 }
+
+async function signIn(
+  provider: string,
+  { email, password, redirect }: { email: string; password: string; redirect: boolean }
+) {
+  if (provider === "credentials") {
+    const res = await fetch("/api/auth/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    if (!res.ok) {
+      throw new Error("Sign in failed");
+    }
+    if (redirect) {
+      window.location.href = "/";
+    }
+    return await res.json();
+  }
+  throw new Error(`Provider ${provider} not supported.`);
+}
+
