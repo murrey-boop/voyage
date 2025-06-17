@@ -3,13 +3,17 @@
 import type { Tour } from '@/types/tours';
 import { FlightDeal } from '@/types/flights';
 import type  { VisaPromo } from '@/types/visa';
-import { MapPin } from 'lucide-react';
 
 export const mockTours: Tour[] = [
 
   {
     id: 'tour1',
     name: 'safari',
+    title: 'Safari Adventure',
+    location: 'Maasai Mara, Kenya',
+    category: ['Wildlife'],
+    highlights: ['Big Five spotting', 'Game drives', 'Cultural visits'],
+    includes: ['Accommodation', 'Meals', 'Guided tours'],
     image: '/images/safari.jpg',
     rating: 4.8,
     reviewsCount: 120,
@@ -18,11 +22,16 @@ export const mockTours: Tour[] = [
     difficulty: 'Challenging',
     price: 850,
     originalPrice: 1200,
-    icon: MapPin,
+    icon: "MapPin",
   },
   {
     id: 'tour2',
     name: 'Safari in Maasai Mara',
+    title: 'Safari in Maasai Mara',
+    location: 'Maasai Mara, Kenya',
+    category: ['Wildlife'],
+    highlights: ['Big Five spotting', 'Game drives', 'Cultural visits'],
+    includes: ['Accommodation', 'Meals', 'Guided tours'],
     image: '/images/maasai-mara.jpg',
     rating: 4.9,
     reviewsCount: 200,
@@ -31,11 +40,16 @@ export const mockTours: Tour[] = [
     difficulty: 'Moderate',
     price: 720,
     originalPrice: 1000,
-    icon: MapPin,
+    icon: "MapPin",
   },
     {
     id: 'tour3',
     name: 'Beach life',
+    title: 'Beach Life Adventure',
+    location: 'Zanzibar, Tanzania',
+    category: ['Beach'],
+    highlights: ['White sand beaches', 'Snorkeling', 'Local cuisine'],
+    includes: ['Accommodation', 'Breakfast', 'Guided tours'],
     image: '/images/zanzibar.jpg',
     rating: 4.9,
     reviewsCount: 200,
@@ -44,7 +58,7 @@ export const mockTours: Tour[] = [
     difficulty: 'Moderate',
     price: 720,
     originalPrice: 1000,
-    icon: MapPin ,
+    icon: "MapPin" ,
   },
 ];
 
@@ -52,12 +66,15 @@ export const mockFlights: FlightDeal[] = [
   {
     id: 'flight1',
     title: 'Nairobi to Dubai',
+    description: 'Direct flight from Nairobi to Dubai with Emirates.',
+    origin: 'Nairobi',
     destination: 'Dubai',
     airline: 'Emirates',
     duration: '6h 30m',
     stops: 0,
-    price: 499,
-    image: '/images/flights/dubai.jpg',
+    price: '499',
+    date: '2024-07-01',
+    image: '/images/dubai.jpg',
   },
 ];
 
@@ -70,7 +87,7 @@ export const mockVisas: VisaPromo[] = [
     image: '/images/dubai.jpg',
   },
     {
-    id: 'visa1',
+    id: 'visa2',
     title: 'Australia visa',
     country: 'Australia',
     price: 150,

@@ -26,7 +26,7 @@ export const navLinks = [
   { href: '/visa', label: 'Visa' },
   { href: '/flights', label: 'Flights' },
   { href: '/itinerary', label: 'Itinerary' },
-  { href: '/contact', label: 'Contact' }
+  
 ];
 
 export const modalContent = {
@@ -49,12 +49,8 @@ export const modalContent = {
     { title: 'Booking History', href: '/itinerary/history', description: 'View your past bookings.' },
     { title: 'Itinerary Planner', href: '/itinerary/planner', description: 'Plan your next trip.' },
     { title: 'Travel History', href: '/itinerary/history/tours', description: 'See your tour history.' },
-  ],
-  '/contact': [
-    { title: 'Contact Us', href: '/contact', description: 'Get in touch with our team.' },
-    { title: 'Support', href: '/contact/support', description: 'Need help? Contact support.' },
-    { title: 'Feedback', href: '/contact/feedback', description: 'Share your thoughts.' },
-  ],
+  ]
+
 };
 
 export const tours = {
