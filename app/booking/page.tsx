@@ -1,155 +1,223 @@
-'use client';
-
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-import { format } from 'date-fns';
-import { DateRange, Range } from 'react-date-range';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import { tours } from '@/components';
-
-
-// Schema for booking form validation
-
-const bookingSchema = z.object({
-  name: z.string().min(2, 'Name required'),
-  email: z.string().email('Invalid email'),
-  destination: z.string().min(1, 'Destination required'),
-  guests: z.coerce.number().min(1, 'At least 1 guest'),
-  checkIn: z.string(),
-  checkOut: z.string(),
-});
-
-type BookingFormData = z.infer<typeof bookingSchema>;
+"use client";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function BookingPage() {
-  const { data: session } = useSession();
-  const [dateRange, setDateRange] = useState<Range[]>([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection',
-    },
-  ]);
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<BookingFormData>({
-    resolver: zodResolver(bookingSchema),
-    defaultValues: {
-      name: session?.user?.name || '',
-      email: session?.user?.email || '',
-      destination: '',
-      guests: 1,
-    },
-  });
-
-  const onSubmit = (data: BookingFormData) => {
-    toast.success('Booking submitted!');
-    console.log({ ...data });
-    // Later: Save to database
+  type BookingForm = {
+    tourId: string;
+    guests: number;
+    startDate: string;
+    endDate: string;
+    note: string;
+    destination: string;
+    guestEmail?: string;
+    guestPhone?: string;
+    name?: string;
   };
 
+  const [form, setForm] = useState<BookingForm>({
+    tourId: "",
+    guests: 1,
+    startDate: "",
+    endDate: "",
+    note: "",
+    destination: "",
+    guestEmail: "",
+    guestPhone: "",
+    name: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  // Prefill form from query params on first render
+  useEffect(() => {
+    const tourId = searchParams.get("tourId") || "";
+    const destination = searchParams.get("destination") || "";
+    const title = searchParams.get("title") || "";
+    const flightId = searchParams.get("flightId") || "";
+    const visaId = searchParams.get("visaId") || "";
+    const route = searchParams.get("route") || "";
+    const country = searchParams.get("country") || "";
+
+    setForm((f) => ({
+      ...f,
+      tourId: tourId || flightId || visaId || "",
+      destination: destination || country || route || title || "",
+    }));
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    // If you want to force login for bookings, uncomment below:
+    // if (status === "unauthenticated") router.replace("/login?callbackUrl=/booking");
+  }, [status, router]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setSuccess(false);
+
+    const body = { ...form };
+    if (session?.user) {
+      // Remove guest fields
+      delete body.guestEmail;
+      delete body.guestPhone;
+      delete body.name;
+    } else {
+      if (!form.guestEmail) {
+        setError("Guest email required");
+        return;
+      }
+    }
+
+    const res = await fetch("/api/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (res.ok) {
+      setSuccess(true);
+      setForm({
+        tourId: "",
+        guests: 1,
+        startDate: "",
+        endDate: "",
+        note: "",
+        destination: "",
+        guestEmail: "",
+        guestPhone: "",
+        name: "",
+      });
+    } else {
+      const data = await res.json();
+      setError(data.error || "Booking failed");
+    }
+  }
+
   return (
-    <div className="max-w-2xl mx-auto p-6 md:p-10 rounded-xl shadow-xl bg-white border border-gray-200">
-      <h2 className="text-3xl font-bold mb-6 text-blue-700">Book Your Tour</h2>
-      <form
-        onSubmit={handleSubmit((formData) => {
-          const startDate = dateRange[0].startDate;
-          const endDate = dateRange[0].endDate;
-          formData.checkIn = startDate ? format(startDate, 'yyyy-MM-dd') : '';
-          formData.checkOut = endDate ? format(endDate, 'yyyy-MM-dd') : '';
-          onSubmit(formData);
-        })}
-        className="space-y-5"
-      >
+    <div className="max-w-2xl mx-auto py-10">
+      <h1 className="text-3xl font-bold mb-6">Book Your Tour</h1>
+      <form className="space-y-4 bg-white p-6 rounded shadow" onSubmit={handleSubmit}>
         <div>
-          <label className="text-sm font-semibold text-gray-700">Name</label>
-          <Input
-            className="mt-1"
-            placeholder="Full name"
-            {...register('name')}
+          <label className="block mb-1 font-semibold">Tour/Flight/Visa ID</label>
+          <input
+            className="input input-bordered w-full"
+            placeholder="Tour/Flight/Visa ID"
+            value={form.tourId}
+            onChange={e => setForm(f => ({ ...f, tourId: e.target.value }))}
+            required
           />
-          {errors.name && (
-            <p className="text-sm text-red-500">{errors.name.message}</p>
-          )}
         </div>
-
         <div>
-          <label className="text-sm font-semibold text-gray-700">Email</label>
-          <Input
-            className="mt-1"
-            placeholder="Email address"
-            {...register('email')}
+          <label className="block mb-1 font-semibold">Destination/Country/Route</label>
+          <input
+            className="input input-bordered w-full"
+            placeholder="Destination/Country/Route"
+            value={form.destination}
+            onChange={e => setForm(f => ({ ...f, destination: e.target.value }))}
+            required
           />
-          {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
-          )}
         </div>
-
         <div>
-          <label className="text-sm font-semibold text-gray-700">
-            Destination
-          </label>
-          <select
-            {...register('destination')}
-            className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="">Select a destination</option>
-            {tours.topTours.map((tour) => (
-              <option key={tour.id} value={tour.title}>
-                {tour.title}
-              </option>
-            ))}
-          </select>
-          {errors.destination && (
-            <p className="text-sm text-red-500">{errors.destination.message}</p>
-          )}
+          <label className="block mb-1 font-semibold">Start Date</label>
+          <input
+            type="date"
+            className="input input-bordered w-full"
+            value={form.startDate}
+            onChange={e => setForm(f => ({ ...f, startDate: e.target.value }))}
+            required
+          />
         </div>
-
         <div>
-          <label className="text-sm font-semibold text-gray-700">Guests</label>
-          <Input
+          <label className="block mb-1 font-semibold">End Date</label>
+          <input
+            type="date"
+            className="input input-bordered w-full"
+            value={form.endDate}
+            onChange={e => setForm(f => ({ ...f, endDate: e.target.value }))}
+            required
+          />
+        </div>
+        <div>
+          <label className="block mb-1 font-semibold">Number of Guests</label>
+          <input
             type="number"
-            min={1}
-            className="mt-1"
-            {...register('guests')}
+            min="1"
+            className="input input-bordered w-full"
+            value={form.guests}
+            onChange={e => setForm(f => ({ ...f, guests: Number(e.target.value) }))}
+            required
           />
-          {errors.guests && (
-            <p className="text-sm text-red-500">{errors.guests.message}</p>
-          )}
         </div>
-
         <div>
-          <label className="text-sm font-semibold text-gray-700">
-            Select Dates
-          </label>
-          <div className="mt-2 border rounded-lg overflow-hidden">
-            <DateRange
-              ranges={dateRange}
-              onChange={(item) => setDateRange([item.selection])}
-              rangeColors={['#2563eb']}
-              minDate={new Date()}
-            />
-          </div>
+          <label className="block mb-1 font-semibold">Note</label>
+          <input
+            className="input input-bordered w-full"
+            placeholder="Special requests or notes"
+            value={form.note}
+            onChange={e => setForm(f => ({ ...f, note: e.target.value }))}
+          />
         </div>
 
-        <Button
-          type="submit"
-          className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold rounded-lg shadow"
-        >
-          Confirm Booking
-        </Button>
+        {/* Guest fields only show if not logged in */}
+        {!session?.user && (
+          <>
+            <div>
+              <label className="block mb-1 font-semibold">Your Name</label>
+              <input
+                className="input input-bordered w-full"
+                placeholder="Full Name"
+                value={form.name}
+                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-semibold">Your Email</label>
+              <input
+                className="input input-bordered w-full"
+                placeholder="Email"
+                type="email"
+                value={form.guestEmail}
+                onChange={e => setForm(f => ({ ...f, guestEmail: e.target.value }))}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-semibold">Phone (optional)</label>
+              <input
+                className="input input-bordered w-full"
+                placeholder="Phone Number"
+                value={form.guestPhone}
+                onChange={e => setForm(f => ({ ...f, guestPhone: e.target.value }))}
+              />
+            </div>
+          </>
+        )}
+
+        <button className="btn btn-primary w-full" type="submit">
+          Book Now
+        </button>
       </form>
+      {error && <p className="text-red-500 mt-3">{error}</p>}
+      {success && (
+        <p className="text-green-600 mt-3">
+          Booking successful! We&apos;ll contact you soon.
+        </p>
+      )}
+      {session?.user && (
+        <div className="mt-4">
+          <p>
+            Booking as: <b>{session.user.name}</b> ({session.user.email})
+          </p>
+        </div>
+      )}
     </div>
   );
 }

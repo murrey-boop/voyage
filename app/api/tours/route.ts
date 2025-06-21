@@ -1,5 +1,5 @@
 // app/api/tours/route.ts
-import { supabase } from '@/lib/supabase'
+import { supabase } from '@/lib/neon'
 
 export async function GET() {
   const { data, error } = await supabase

@@ -1,5 +1,6 @@
 'use client';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 export default function WhatsAppFloat() {
@@ -40,7 +41,7 @@ export default function WhatsAppFloat() {
       />
       <div ref={floatRef}>
         <a
-          href="https://wa.me/254712345678"
+          href="https://wa.me/254743524370"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors flex items-center justify-center"
@@ -52,10 +53,12 @@ export default function WhatsAppFloat() {
             gsap.to(floatRef.current, { scale: 1, duration: 0.2 });
           }}
         >
-          <img 
-            src="/icons/whatsapp.svg" 
-            alt="WhatsApp" 
-            className="w-8 h-8" 
+          <Image
+            src="/icons/whatsapp.svg"
+            alt="WhatsApp"
+            className="w-8 h-8"
+            width={32}
+            height={32}
           />
         </a>
       </div>

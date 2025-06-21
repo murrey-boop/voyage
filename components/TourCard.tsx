@@ -1,10 +1,11 @@
 'use client';
 
-import React, {  Suspense } from 'react';
-import {  ErrorBoundary } from './ErrorBoundary';
+import React, { Suspense } from 'react';
+import { ErrorBoundary } from './ErrorBoundary'; 
+import { tours } from '@/data/tours';
+import { flights } from '@/data/flights';
+import { visas } from '@/data/visa';
 import TourSection from './tours/TourSection';
-import { mockTours, mockFlights, mockVisas } from '@/mock/tours.mock';
-
 
 export default function TourCard() {
   return (
@@ -14,7 +15,7 @@ export default function TourCard() {
           <TourSection
             type="tours"
             sectionTitle="Top Tours"
-            items={mockTours}
+            items={tours}
             seeMoreLink="/tours"
           />
         </Suspense>
@@ -25,7 +26,7 @@ export default function TourCard() {
           <TourSection
             type="flights"
             sectionTitle="Flight Deals"
-            items={mockFlights}
+            items={flights}
             seeMoreLink="/flights"
           />
         </Suspense>
@@ -36,7 +37,7 @@ export default function TourCard() {
           <TourSection
             type="visas"
             sectionTitle="Visa Promotions"
-            items={mockVisas}
+            items={visas}
             seeMoreLink="/visa"
           />
         </Suspense>

@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.9.0
- * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
+ * Prisma Client JS version: 6.10.1
+ * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
  */
 Prisma.prismaVersion = {
-  client: "6.9.0",
-  engine: "81e4af48011447c3cc503a190e86995b66d2a28e"
+  client: "6.10.1",
+  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -124,7 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  emailverified: 'emailverified',
+  emailVerified: 'emailVerified',
   image: 'image',
   password: 'password',
   role: 'role',
@@ -135,8 +135,6 @@ exports.Prisma.UserScalarFieldEnum = {
   city: 'city',
   country: 'country',
   postalCode: 'postalCode',
-  verificationTokens: 'verificationTokens',
-  VerificationToken: 'VerificationToken',
   resetToken: 'resetToken',
   resetTokenExpires: 'resetTokenExpires',
   resetTokenUsed: 'resetTokenUsed',
@@ -157,6 +155,14 @@ exports.Prisma.AccountScalarFieldEnum = {
   scope: 'scope',
   id_token: 'id_token',
   session_state: 'session_state'
+};
+
+exports.Prisma.FavoriteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  itemId: 'itemId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -311,6 +317,7 @@ exports.BookingStatus = exports.$Enums.BookingStatus = {
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
+  Favorite: 'Favorite',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Tour: 'Tour',

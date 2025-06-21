@@ -1,100 +1,193 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import { useSession } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Heart, Bookmark, Plane, MapPin, Star, Calendar, Users } from 'lucide-react';
-import { Tour } from '@/types/tours';
+import { Heart, Bookmark, Plane, MapPin, Star, Users, Clock, CheckCircle, XCircle, ArrowRightLeft, Calendar } from 'lucide-react';
+import { Tour } from '@/data/tours';
+import { Flight } from '@/data/flights';
+import { Visa } from '@/data/visa';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { FlightDeal } from '@/types/flights';
 import { VisaPromo } from '@/types/visa';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  getGuestFavorites,
+  isGuestFavorite,
+  addGuestFavorite,
+  removeGuestFavorite,
+} from '@/lib/guestFavorites';
 
 export type Props = {
   type: 'tours' | 'flights' | 'visas';
-  data: Tour | FlightDeal | VisaPromo;
+  data: Tour | Flight | Visa | FlightDeal | VisaPromo;
 };
 
 const TourCardItem: React.FC<Props> = ({ type, data }) => {
+  const { data: session } = useSession();
+  const id = String('id' in data ? data.id : ""); // fallback if missing
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleFavorite = () => {
-    setIsFavorite((prev) => !prev);
+
+  // On mount, check favorite status
+  useEffect(() => {
+    if (session?.user) {
+      // Optionally: fetch from API /api/favorites?type=...&itemId=...
+      // For simplicity, fetch all favorites on page (could optimize)
+      fetch("/api/favorites")
+        .then(res => res.json())
+        .then(({ favorites }) => {
+          setIsFavorite(favorites?.some((f: any) => f.type === type && f.itemId === id));
+        });
+    } else {
+      setIsFavorite(isGuestFavorite(type, id));
+    }
+    
+  }, [session?.user, id, type]);
+
+
+  const handleFavorite = async () => {
+    if (!id) return;
+    if (session?.user) {
+      const method = isFavorite ? "DELETE" : "POST";
+      const res = await fetch("/api/favorites", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type, itemId: id }),
+      });
+      if (res.ok) setIsFavorite(!isFavorite);
+    } else {
+      if (isFavorite) {
+        removeGuestFavorite(type, id);
+      } else {
+        addGuestFavorite(type, id);
+      }
+      setIsFavorite(!isFavorite);
+    }
   };
 
+  // Get image, fallback if not present
   const getImage = () => {
     if ('image' in data && data.image) return data.image;
-    return '/images/nairobi.jpg';
+    return '/images/fallback.jpg';
   };
 
+  // Get title
+  const getTitle = () => {
+    if ('title' in data) return data.title;
+    return 'Untitled';
+  };
+
+  // Get price as string
+  const getPrice = () => {
+    if ('price' in data) return data.price;
+    return '';
+  };
+
+  // Prepare booking link with query params for booking page
+  const getBookingLink = () => {
+    if (type === 'tours') {
+      const tour = data as Tour;
+      // Pass ID, title, and location as query params
+      const params = new URLSearchParams({
+        tourId: String(tour.id),
+        title: tour.title,
+        destination: tour.location || '',
+      });
+      return `/booking?${params.toString()}`;
+    }
+    if (type === 'flights') {
+      const flight = data as Flight;
+      // You can add more params as needed
+      const params = new URLSearchParams({
+        flightId: String(flight.id),
+        route: flight.route,
+      });
+      return `/booking?${params.toString()}`;
+    }
+    if (type === 'visas') {
+      const visa = data as Visa;
+      const params = new URLSearchParams({
+        visaId: String(visa.id),
+        country: visa.country,
+      });
+      return `/booking?${params.toString()}`;
+    }
+    return '#';
+  };
+
+  // Render details for each card type
   const renderDetails = () => {
     if (type === 'tours') {
       const tour = data as Tour;
       return (
-        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
           <div className="flex items-center gap-1">
             <Star className="w-4 h-4 text-yellow-500 fill-yellow-400" />
-            <span>{tour.rating} • {tour.reviewsCount} reviews</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Calendar className="w-4 h-4" />
-            <span>{tour.duration}</span>
+            <span>{tour.reviews} reviews</span>
           </div>
           <div className="flex items-center gap-1">
             <Users className="w-4 h-4" />
-            <span>{tour.groupSize}</span>
+            <span>{tour.people} people</span>
           </div>
+          {tour.location && (
+            <div className="flex items-center gap-1">
+              <MapPin className="w-4 h-4" />
+              <span>{tour.location}</span>
+            </div>
+          )}
         </div>
       );
     }
 
     if (type === 'flights') {
-      const flight = data as FlightDeal;
+      const flight = data as Flight;
       return (
-        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
           <div className="flex items-center gap-1">
-            <Plane className="w-4 h-4" />
-            <span>{flight.airline}</span>
+            <ArrowRightLeft className="w-4 h-4" />
+            <span>{flight.route}</span>
           </div>
           <div className="flex items-center gap-1">
-            <Calendar className="w-4 h-4" />
-            <span>{flight.duration}</span>
+            <Clock className="w-4 h-4" />
+            <span>{flight.hours} hours</span>
           </div>
           <div className="flex items-center gap-1">
-            <span>{flight.stops === 0 ? 'Non-stop' : `${flight.stops} stop(s)`}</span>
+            {flight.isDirect ? (
+              <>
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                <span>Direct flight</span>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-4 h-4 text-orange-500" />
+                <span>{flight.stops ?? 1} stop{flight.stops && flight.stops > 1 ? 's' : ''}</span>
+              </>
+            )}
           </div>
         </div>
       );
     }
 
     if (type === 'visas') {
-      const visa = data as VisaPromo;
+      const visa = data as Visa;
       return (
-        <div className="text-sm text-gray-600 dark:text-gray-400">
-          <span>Valid for: {visa.validity}</span>
+        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+          <div className="flex items-center gap-1">
+            <MapPin className="w-4 h-4" />
+            <span>{visa.country}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Calendar className="w-4 h-4" />
+            <span>Valid for: {visa.validity}</span>
+          </div>
         </div>
       );
     }
 
     return null;
-  };
-
-  const getTitle = () => {
-    if ('name' in data) return data.name;
-    if ('title' in data) return data.title;
-    return 'Untitled';
-  };
-
-  const getPrice = () => {
-    if ('price' in data) return Number(data.price);
-    return 0;
-  };
-
-  const getLink = () => {
-    if (type === 'tours') return `/tours/${data.id}`;
-    if (type === 'flights') return `/flights`;
-    return `/visa`;
   };
 
   return (
@@ -137,7 +230,7 @@ const TourCardItem: React.FC<Props> = ({ type, data }) => {
             (e.target as HTMLImageElement).src = '/images/fallback.jpg';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
       </div>
 
       {/* Details */}
@@ -148,15 +241,15 @@ const TourCardItem: React.FC<Props> = ({ type, data }) => {
           {type === 'visas' && (
             <Image src="/icons/passport.png" alt="Visa Icon" width={20} height={20} />
           )}
-          <h3 className="text-lg font-bold text-gray-800">{getTitle()}</h3>
+          <h3 className="text-lg font-bold text-gray-800 truncate">{getTitle()}</h3>
         </div>
 
         {renderDetails()}
 
         <div className="flex justify-between items-center mt-2">
-          <p className="text-lg font-semibold text-gray-900 dark:text-gray-200">${getPrice()}</p>
+          <p className="text-lg font-semibold text-gray-900 dark:text-gray-200">{getPrice()}</p>
           <Button size="sm" asChild className="bg-blue-600 hover:bg-blue-700 text-white">
-            <Link href={getLink()}>Book Now</Link>
+            <Link href={getBookingLink()}>Book Now</Link>
           </Button>
         </div>
       </div>
