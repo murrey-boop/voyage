@@ -13,7 +13,7 @@ export const tours: Tour[] = [
   {
     id: 1,
     title: "Masai Mara Safari Adventure",
-    image: "/images/tours/masai-mara.jpg",
+    image: "/images/maasai-mara.jpg",
     location: "Kenya",
     price: "$1,200",
     description: "Experience the great wildebeest migration and Africa's Big Five in Kenya's famous Masai Mara.",
@@ -23,7 +23,7 @@ export const tours: Tour[] = [
   {
     id: 2,
     title: "Victoria Falls Explorer",
-    image: "/images/tours/victoria-falls.jpg",
+    image: "/images/london.jpg",
     location: "Zambia/Zimbabwe",
     price: "$950",
     description: "Marvel at the majestic Victoria Falls, one of the world’s largest waterfalls.",
@@ -33,7 +33,7 @@ export const tours: Tour[] = [
   {
     id: 3,
     title: "Cape Town City & Wine Tour",
-    image: "/image/cape-town.jpg",
+    image: "/images/cape-town.jpg",
     location: "South Africa",
     price: "$1,300",
     description: "Discover Table Mountain, Cape Town's city life, and world-class vineyards.",
@@ -43,7 +43,7 @@ export const tours: Tour[] = [
   {
     id: 4,
     title: "Sahara Desert Expedition",
-    image: "/images/maasai-mara.jpg",
+    image: "/images/travel-random.jpg",
     location: "Morocco",
     price: "$1,100",
     description: "Ride camels across the golden dunes and experience Berber hospitality.",

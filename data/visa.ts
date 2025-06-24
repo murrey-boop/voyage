@@ -22,7 +22,7 @@ export const visas: Visa[] = [
   {
     id: 2,
     title: "Egypt Entry Visa",
-    image: "/images/visas/santorini.jpg",
+    image: "/images/santorini.jpg",
     country: "Egypt",
     price: "$60",
     description: "Quick approval for Egypt&apos;s single and multiple-entry visas.",

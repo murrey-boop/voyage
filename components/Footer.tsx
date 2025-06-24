@@ -29,7 +29,7 @@ export default function Footer() {
               className="bg-blue-500 hover:bg-blue-600 text-white"
               aria-label="Book your trip now"
             >
-              <Link href="/booking">Book Now</Link>
+              <Link href="/OurStory">Our story</Link>
             </Button>
           </div>
 

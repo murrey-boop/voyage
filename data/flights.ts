@@ -35,7 +35,7 @@ export const flights: Flight[] = [
   {
     id: 3,
     title: "Cairo to Casablanca",
-    image: "/images/flights/qatar2.jpg",
+    image: "/images/qatar2.jpg",
     route: "Cairo - Casablanca",
     price: "$380",
     description: "Convenient flights from Egypt&apos;s capital to Morocco&apos;s gem.",
