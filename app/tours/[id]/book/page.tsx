@@ -1,13 +1,13 @@
 
 import getServerSession from 'next-auth';
-import { authOptions}  from '@/lib/auth';
+import { authOptions}  from '@'
 import { redirect } from 'next/navigation';
 import {BookingForm} from '@/components/BookingForm';
 
 export default async function BookTour({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    redirect(`/auth/signin?callbackUrl=/tours/${params.id}/book`);
+    redirect(`/login?callbackUrl=/tours/${params.id}/book`);
   }
 
   return (

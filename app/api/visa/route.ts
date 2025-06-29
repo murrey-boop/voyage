@@ -1,5 +1,13 @@
+import { neon } from "@neondatabase/serverless"
+
+const sql = neon(process.env.DATABASE_URL!);
+
 export async function GET() {
-  const { data, error } = await supabase.from('visaPromos'.select('*')
-  if (error) return new Response(JSON.stringify({ error: error.message }), { status: 500 })
-  return Response.json(data)
+  try {
+    const data = await sql`SELECT * FROM visaPromos`;
+    return Response.json(data);
+  } catch (error: unknown) {
+    const errorMessage = (error instanceof Error) ? error.message : String(error);
+    return new Response(JSON.stringify({ error: errorMessage }), { status: 500 });
+  }
 }

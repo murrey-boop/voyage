@@ -30,6 +30,9 @@ export default function VisaServices() {
     );
   }, []);
 
+  // Border size for both horizontal and vertical (e.g., 7px thick, 48px long)
+  const borderLength = 'h-12 w-[7px]'; // 48px height, 7px width
+
   return (
     <section
       className="relative container mx-auto px-4 py-20"
@@ -54,49 +57,54 @@ export default function VisaServices() {
             className="group visa-service-card relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg text-center transition duration-200 transform hover:scale-105 hover:shadow-xl focus-within:ring-2 focus-within:ring-blue-400 border border-gray-100 dark:border-gray-700 overflow-hidden"
             tabIndex={0}
           >
-            
+            {/* Gradient Borders on hover: Top-left and Bottom-right (both vertical and horizontal, same size) */}
             <div
-              className={`
-                pointer-events-none absolute z-10 top-0 left-0 w-full h-full rounded-2xl
-                transition-opacity duration-300
-                before:absolute before:content-['']
-                before:top-0 before:left-0
-                before:w-1/4 before:h-[7px]
-                before:bg-gradient-to-r before:from-blue-600 before:to-yellow-400
-                before:rounded-tl-2xl
-                before:opacity-0 group-hover:before:opacity-100
-                before:transition-opacity before:duration-300
-                after:absolute after:content-['']
-                after:bottom-0 after:right-0
-                after:w-1/4 after:h-[7px]
-                after:bg-gradient-to-l after:from-blue-600 after:to-yellow-400
-                after:rounded-br-2xl
-                after:opacity-0 group-hover:after:opacity-100
-                after:transition-opacity after:duration-300
-              `}
+              className="pointer-events-none absolute z-10 top-0 left-0 w-full h-full rounded-2xl transition-opacity duration-300"
               aria-hidden="true"
             >
-              {/* Top-left vertical */}
+              {/* Top-left: vertical */}
               <span
-                className="
+                className={`
                   absolute left-0 top-0
-                  w-[7px] h-1/4
+                  h-12 w-[7px]
                   bg-gradient-to-b from-blue-600 to-yellow-400
                   rounded-tl-2xl
                   opacity-0 group-hover:opacity-100
                   transition-opacity duration-300
-                "
+                `}
               />
-              {/* Bottom-right vertical */}
+              {/* Top-left: horizontal, same size as vertical but rotated */}
               <span
-                className="
+                className={`
+                  absolute left-0 top-0
+                  w-12 h-[7px]
+                  bg-gradient-to-r from-blue-600 to-yellow-400
+                  rounded-tl-2xl
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300
+                `}
+              />
+              {/* Bottom-right: vertical */}
+              <span
+                className={`
                   absolute right-0 bottom-0
-                  w-[7px] h-1/4
+                  h-12 w-[7px]
                   bg-gradient-to-t from-blue-600 to-yellow-400
                   rounded-br-2xl
                   opacity-0 group-hover:opacity-100
                   transition-opacity duration-300
-                "
+                `}
+              />
+              {/* Bottom-right: horizontal, same size as vertical but rotated */}
+              <span
+                className={`
+                  absolute right-0 bottom-0
+                  w-12 h-[7px]
+                  bg-gradient-to-l from-blue-600 to-yellow-400
+                  rounded-br-2xl
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300
+                `}
               />
             </div>
             <div className="mb-5 flex justify-center">{icons[service.icon as keyof typeof icons]}</div>
