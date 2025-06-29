@@ -1,14 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { MapPin, Mail, Phone, Sun, Moon, Calendar,  } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { Button } from '@/components/ui/button';
+import { MapPin, Mail, Phone, Calendar } from 'lucide-react';
 import Image from 'next/image';
+import ThemeToggle from './ThemeToggle';
 
 export default function Footer() {
-  const { theme, setTheme } = useTheme();
-
   return (
     <footer
       className="w-full py-12 bg-gradient-to-br from-blue-500/80 to-gray-900 text-white font-inter"
@@ -23,14 +20,14 @@ export default function Footer() {
             <p className="text-sm mb-4">
               Digital Voyage offers tours, visas, flights, and itineraries for unforgettable travel experiences.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white"
-              aria-label="Book your trip now"
-            >
-              <Link href="/OurStory">Our story</Link>
-            </Button>
+            <Link href="/OurStory">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-semibold transition"
+                aria-label="Read our story"
+              >
+                Our Story
+              </button>
+            </Link>
           </div>
 
           {/* Quick Links */}
@@ -90,15 +87,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <Button
-              variant="outline"
-              className="bg-white/10 hover:bg-white/20 border-white/30"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun className="mr-2 h-4 w-4" /> : <Moon className="mr-2 h-4 w-4" />}
-              Theme
-            </Button>
+            <ThemeToggle />
           </div>
         </div>
 

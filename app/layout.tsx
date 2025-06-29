@@ -3,6 +3,8 @@ import './globals.css';
 import FloatingSocials from '@/components/Floatingsocials';
 import { Providers } from './provider';
 import { WishlistProvider } from '@/components/WishlistProvider';
+import TawkToWidget from '@/components/TawkToWidget';
+import WhatsappChat from '@/components/WhatsappChat';
 
 
 
@@ -50,8 +52,10 @@ export const metadata = {
           <body>
             <Providers>
               <WishlistProvider >
+                <TawkToWidget />
                 <FloatingSocials />
-                  {children}
+                <WhatsappChat />
+                {children}
               </WishlistProvider>
             </Providers>
           </body>

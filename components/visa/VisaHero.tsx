@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { gsap } from 'gsap';
+import { ArrowRight } from 'lucide-react'; // <-- Import the icon
 
 const visaTypes = ['Tourist', 'Business', 'Student'];
-const countries = ['UAE', 'Australia', 'Kenya', 'Nigeria', 'South Africa', 'Ghana']; // TODO : Add more countries
+const countries = ['UAE', 'Australia', 'Kenya', 'Morrocco', 'Egypt','Oman','Germany', 'South Africa', 'Canada','USA']; // TODO : Add more countries
 
 export default function VisaHero() {
   const router = useRouter();
@@ -36,9 +37,10 @@ export default function VisaHero() {
 
   return (
     <section className="relative h-[500px] flex flex-col items-center justify-center bg-gray-900 text-white px-4">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-black/50 z-10" />
+      {/* --- Overlay Layer --- */}
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/images/visa-hero.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-black opacity-70" /> {/* Stronger overlay */}
       </div>
 
       <div className="relative z-20 text-center visa-hero-text mb-6">
@@ -49,11 +51,11 @@ export default function VisaHero() {
       </div>
 
       {/* Search Form */}
-      <div className="relative z-20 visa-search-form bg-white rounded-lg shadow-lg p-6 md:flex md: md:space-x-4 w-full md:w-[75%] max-w-4xl md:max-w-2xl">
+      <div className="relative z-20 visa-search-form bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row md:space-x-4 w-full md:w-[75%] max-w-4xl md:max-w-2xl">
         <select
           value={visaType}
           onChange={(e) => setVisaType(e.target.value)}
-          className="w-full md:w-1/3 p-2 rounded border mb-4 md:mb-0"
+          className="w-full md:w-1/3 p-2 rounded border mb-4 md:mb-0 text-gray-900"
         >
           <option value="">Select Visa Type</option>
           {visaTypes.map((type) => (
@@ -64,7 +66,7 @@ export default function VisaHero() {
         <select
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          className="w-full md:w-1/3 p-2 rounded border mb-4 md:mb-0"
+          className="w-full md:w-1/3 p-2 rounded border mb-4 md:mb-0 text-gray-900"
         >
           <option value="">Select Country</option>
           {countries.map((cty) => (
@@ -72,25 +74,13 @@ export default function VisaHero() {
           ))}
         </select>
 
-      <Button
-        onClick={handleSearch}
-        className="w-full md:w-auto flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 transition-all duration-300"
-      >
+        <Button
+          onClick={handleSearch}
+          className="w-full md:w-1/3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold py-2 rounded-lg shadow hover:from-orange-600 hover:to-orange-700 transition flex items-center justify-center"
+        >
           Apply Now
-        <span className="inline-block animate-bounce">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 animate-slide-right"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-
-        </span>
-      </Button>
-
+          <ArrowRight className="ml-2 animate-bounce" size={20} />
+        </Button>
       </div>
     </section>
   );

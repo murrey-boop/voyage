@@ -1,36 +1,107 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FileText, CheckSquare, Clock } from 'lucide-react';
 import { visaServices } from '@/components/visa/visaData';
 import { gsap } from 'gsap';
 
 const icons = {
-  FileText: <FileText className="h-8 w-8 text-primary" />,
-  CheckSquare: <CheckSquare className="h-8 w-8 text-primary" />,
-  Clock: <Clock className="h-8 w-8 text-primary" />,
+  FileText: <FileText className="h-10 w-10 text-blue-700 dark:text-blue-300" />,
+  CheckSquare: <CheckSquare className="h-10 w-10 text-green-700 dark:text-green-300" />,
+  Clock: <Clock className="h-10 w-10 text-orange-500 dark:text-orange-300" />,
 };
 
 export default function VisaServices() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
   useEffect(() => {
+    // Fade-in for heading
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+      );
+    }
+    // Fade-in for cards
     gsap.fromTo(
       '.visa-service-card',
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out' }
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, delay: 0.3, ease: 'power3.out' }
     );
   }, []);
 
   return (
-    <section className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold text-center mb-12">Our Visa Services</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section
+      className="relative container mx-auto px-4 py-20"
+      aria-label="Visa Services"
+      role="region"
+    >
+      {/* Subtle background gradient/pattern for visual separation */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50/80 via-white/90 to-blue-100/60 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800" />
+      {/* Optional section divider */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-24 h-1 rounded-b bg-blue-600/40 dark:bg-blue-400/40" />
+
+      <h2
+        ref={headingRef}
+        className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900 dark:text-blue-200"
+      >
+        Our Visa Services
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-8 md:gap-y-8">
         {visaServices.map((service, index) => (
           <div
             key={index}
-            className="visa-service-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-center"
+            className="group visa-service-card relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg text-center transition duration-200 transform hover:scale-105 hover:shadow-xl focus-within:ring-2 focus-within:ring-blue-400 border border-gray-100 dark:border-gray-700 overflow-hidden"
+            tabIndex={0}
           >
-            <div className="mb-4">{icons[service.icon as keyof typeof icons]}</div>
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+            
+            <div
+              className={`
+                pointer-events-none absolute z-10 top-0 left-0 w-full h-full rounded-2xl
+                transition-opacity duration-300
+                before:absolute before:content-['']
+                before:top-0 before:left-0
+                before:w-1/4 before:h-[7px]
+                before:bg-gradient-to-r before:from-blue-600 before:to-yellow-400
+                before:rounded-tl-2xl
+                before:opacity-0 group-hover:before:opacity-100
+                before:transition-opacity before:duration-300
+                after:absolute after:content-['']
+                after:bottom-0 after:right-0
+                after:w-1/4 after:h-[7px]
+                after:bg-gradient-to-l after:from-blue-600 after:to-yellow-400
+                after:rounded-br-2xl
+                after:opacity-0 group-hover:after:opacity-100
+                after:transition-opacity after:duration-300
+              `}
+              aria-hidden="true"
+            >
+              {/* Top-left vertical */}
+              <span
+                className="
+                  absolute left-0 top-0
+                  w-[7px] h-1/4
+                  bg-gradient-to-b from-blue-600 to-yellow-400
+                  rounded-tl-2xl
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300
+                "
+              />
+              {/* Bottom-right vertical */}
+              <span
+                className="
+                  absolute right-0 bottom-0
+                  w-[7px] h-1/4
+                  bg-gradient-to-t from-blue-600 to-yellow-400
+                  rounded-br-2xl
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300
+                "
+              />
+            </div>
+            <div className="mb-5 flex justify-center">{icons[service.icon as keyof typeof icons]}</div>
+            <h3 className="text-xl font-semibold mb-2 text-blue-900 dark:text-blue-100">{service.title}</h3>
+            <p className="text-gray-700 dark:text-gray-200">{service.description}</p>
           </div>
         ))}
       </div>

@@ -13,33 +13,51 @@ interface Tour {
   price: number;
   duration: string;
   image: string;
+  featured?: boolean;
 }
 
 export default function PopularTours({ tours, currency }: { tours: Tour[]; currency: Currency }) {
   const [filter, setFilter] = useState('Featured');
   const [displayedTours, setDisplayedTours] = useState<Tour[]>([]);
-  const cardRefs = useRef<HTMLDivElement[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const filtered = filter === 'Featured' ? tours : tours.filter((tour) => tour.category === filter);
+    let filtered = filter === 'Featured' ? tours : tours.filter((tour) => tour.category === filter);
+
+    // Fill up to 4 cards if not enough in the selected category
+    if (filtered.length < 4) {
+      // Add from other tours that are not in filtered
+      const extraTours = tours.filter(
+        (tour) => !filtered.some((ft) => ft.id === tour.id)
+      );
+      filtered = [...filtered, ...extraTours.slice(0, 4 - filtered.length)];
+    }
     setDisplayedTours(filtered.slice(0, 8));
   }, [filter, tours]);
 
   useEffect(() => {
     cardRefs.current.forEach((card, index) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 20,
-        duration: 1,
-        delay: index * 0.2,
-        ease: 'power3.out',
-      });
+      if (card) {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7, delay: index * 0.1, ease: 'power3.out' }
+        );
+      }
     });
   }, [displayedTours]);
 
   const handleLoadMore = () => {
     const currentLength = displayedTours.length;
-    const moreTours = tours.filter((tour) => filter === 'Featured' || tour.category === filter).slice(currentLength, currentLength + 4);
+    let filtered = filter === 'Featured' ? tours : tours.filter((tour) => tour.category === filter);
+    // Fill up to 4 cards if not enough in the selected category
+    if (filtered.length < 4) {
+      const extraTours = tours.filter(
+        (tour) => !filtered.some((ft) => ft.id === tour.id)
+      );
+      filtered = [...filtered, ...extraTours.slice(0, 4 - filtered.length)];
+    }
+    const moreTours = filtered.slice(currentLength, currentLength + 4);
     setDisplayedTours([...displayedTours, ...moreTours]);
   };
 
@@ -70,21 +88,27 @@ export default function PopularTours({ tours, currency }: { tours: Tour[]; curre
           {displayedTours.map((tour, index) => (
             <article
               key={tour.id}
-              ref={(el) => {
-                if (el) {
-                  cardRefs.current[index] = el as HTMLDivElement;
-                }
-              }}
-              className="p-4 bg-white shadow-sm rounded-lg border border-gray-200 transition duration-300"
+              ref={el => (cardRefs.current[index] = el)}
+              className="p-4 bg-white shadow-md rounded-xl border border-gray-200 transition duration-300 overflow-hidden flex flex-col"
+              style={{ minHeight: 330 }}
             >
-              <Image src={tour.image} alt={tour.title} width={200} height={150} className="rounded-t-lg mb-2 object-cover" />
-              <h3 className="text-base sm:text-lg font-semibold mb-1 font-montserrat">{tour.title}</h3>
-              <p className="text-gray-600 font-lato text-xs sm:text-sm">Region: {tour.region}</p>
-              <p className="text-gray-600 font-lato text-xs sm:text-sm">Price: {currency.symbol}{convertPrice(tour.price)}</p>
-              <p className="text-gray-600 font-lato text-xs sm:text-sm">Duration: {tour.duration}</p>
+              <div className="relative w-full aspect-[4/3] mb-3 rounded-md overflow-hidden">
+                <Image
+                  src={tour.image}
+                  alt={tour.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={index < 4}
+                />
+              </div>
+              <h3 className="text-base sm:text-lg font-semibold mb-1 font-inter">{tour.title}</h3>
+              <p className="text-gray-600 font-inter text-xs sm:text-sm">Region: {tour.region}</p>
+              <p className="text-gray-600 font-inter text-xs sm:text-sm">Price: {currency.symbol}{convertPrice(tour.price)}</p>
+              <p className="text-gray-600 font-inter text-xs sm:text-sm mb-2">Duration: {tour.duration}</p>
               <Link
-                href={`/tours/book/${tour.id}`}
-                className="mt-2 inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold py-1 px-3 rounded-lg text-xs sm:text-sm transition duration-300"
+                href={`/booking}`}
+                className="mt-auto inline-block bg-teal-500 hover:bg-teal-600 text-white text-center font-semibold py-1.5 px-4 rounded-lg text-xs sm:text-sm transition duration-300"
               >
                 Book Now
               </Link>
