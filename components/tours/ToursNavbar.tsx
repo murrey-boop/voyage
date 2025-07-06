@@ -7,6 +7,8 @@ import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import AuthModal from '@/components/auth/AuthModal';
+import ProfileDropdown from '../ProfileDropdown';
 
 export default function ToursNavbar({
   isLoggedIn,
@@ -24,6 +26,7 @@ export default function ToursNavbar({
   const router = useRouter();
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -35,11 +38,7 @@ export default function ToursNavbar({
     return () => document.body.classList.remove('overflow-hidden');
   }, [menuOpen]);
 
-  const handleLoginClick = () => {
-    router.push('/login');
-  };
-
-  // Example mobile nav items array for easy extension
+  // mobile nav items array for easy extension
   const mobileMenuItems = [
     { label: 'Home', href: '/' },
     { label: 'All Tours', href: '/tours' },
@@ -90,13 +89,23 @@ export default function ToursNavbar({
               {firstName.charAt(0).toUpperCase()}
             </Link>
           ) : (
-            <button
-              onClick={handleLoginClick}
-              className="text-teal-600 hover:text-blue-600 font-lato"
-              aria-label="Login"
-            >
-              Login
-            </button>
+            <>
+              <button
+                onClick={() => setShowAuthModal(true)}
+                className="text-teal-600 hover:text-blue-600 font-lato"
+                aria-label="Login"
+              >
+                {isLoggedIn ?(
+                  <ProfileDropdown />
+                ) : (
+                  'Login' 
+                )}
+                
+              </button>
+              {showAuthModal && (
+                <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
+              )}
+            </>
           )}
         </div>
         {/* Hamburger for Mobile */}
@@ -170,16 +179,14 @@ export default function ToursNavbar({
               <button
                 onClick={() => {
                   setMenuOpen(false);
-                  if (onLogout) onLogout(); // Call your logout handler
+                  if (onLogout) onLogout(); // Call the logout handler
                 }}
-                className=" not-only:mt-auto mb-8 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
+                className="not-only:mt-auto mb-18 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
                 aria-label="Logout"
               >
                 <Image
-                  src="/icon/logoutIcon.svg"
+                  src="/icons/logoutIcon.svg"
                   alt="Logout"
-                  width={20}
-                  height={20}
                   className="w-5 h-5 border-red-500 border rounded-full p-1 bg-white/10 hover:bg-white/20 transition-transform duration-300"
                   priority
                   fill={true}
@@ -188,16 +195,21 @@ export default function ToursNavbar({
               </button>
             </>
           ) : (
-            <button
-              className="mt-4 bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg"
-              onClick={() => {
-                setMenuOpen(false);
-                handleLoginClick();
-              }}
-              aria-label="Login"
-            >
-              Login
-            </button>
+            <>
+              <button
+                className="mt-4 bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg"
+                onClick={() => {
+                  setMenuOpen(false);
+                  setShowAuthModal(true);
+                }}
+                aria-label="Login"
+              >
+                Login
+              </button>
+              {showAuthModal && (
+                <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
+              )}
+            </>
           )}
         </div>
       </div>
@@ -211,4 +223,4 @@ export default function ToursNavbar({
       )}
     </nav>
   );
-}
+} 

@@ -12,9 +12,10 @@ export interface VisaService {
   }
   
   export interface VisaStep {
-    step: string;
-    description: string;
-  }
+      step: string;
+      description: string;
+      icon: string; 
+    }
   
   export interface FAQItem {
     question: string;
@@ -94,14 +95,17 @@ export interface VisaService {
     {
       step: 'Submit Documents',
       description: 'Upload your documents securely through our online portal.',
+      icon: 'Upload',
     },
     {
       step: 'We Process',
       description: 'Our team reviews and submits your application to the relevant embassy.',
+      icon: 'Process',
     },
     {
       step: 'Receive Visa',
       description: 'Get your visa approval and travel worry-free.',
+      icon: 'Check',
     },
   ];
   

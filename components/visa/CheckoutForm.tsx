@@ -4,7 +4,8 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import { useVisaFormStore } from '@/store/visaFormStore';
+import { useVisaFormStore } from '@/stores/VisaFormStore';
+import Image from 'next/image';
 
 export default function CheckoutForm() {
   const router = useRouter();
@@ -68,13 +69,13 @@ export default function CheckoutForm() {
         <h3 className="text-lg font-medium mb-2">Choose Payment Method</h3>
         <div className="flex flex-col sm:flex-row gap-4">
           <Button onClick={handleStripeCheckout} className="flex items-center gap-2 bg-black text-white">
-            <img src="/icons/stripe.svg" alt="Stripe" className="h-6" />
+            <Image src="/icons/stripe.svg" alt="Stripe" className="h-6" />
             Pay with Card
           </Button>
 
           <Button onClick={handleMpesaPayment} className="flex items-center gap-2 border border-green-600 text-green-700">
-            <img src="/icons/mpesa.svg" alt="M-Pesa" className="h-6" />
-            Pay with M-Pesa
+            <Image src="/icons/mpesa.svg" alt="M-Pesa" className="h-6" />
+            Pay via M-Pesa
           </Button>
         </div>
       </div>

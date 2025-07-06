@@ -5,7 +5,8 @@ import { Providers } from './provider';
 import { WishlistProvider } from '@/components/WishlistProvider';
 import TawkToWidget from '@/components/TawkToWidget';
 import WhatsappChat from '@/components/WhatsappChat';
-
+import { ClerkProvider } from '@clerk/nextjs';
+import { Toaster } from '@/components/ui/sonner';
 
 
 const inter = Inter({
@@ -50,16 +51,18 @@ export const metadata = {
       return (
         <html lang="en" className={`${inter.className}`} >
           <body>
-            <Providers>
-              <WishlistProvider >
-                <TawkToWidget />
-                <FloatingSocials />
-                <WhatsappChat />
-                {children}
-              </WishlistProvider>
-            </Providers>
-          </body>
-        </html>
-      );
+            <ClerkProvider>            
+                <WishlistProvider >
+                  <TawkToWidget />
+                  <FloatingSocials />
+                  <WhatsappChat />
+                  <Toaster position='top-right'  richColors />
+                    {children}
+                </WishlistProvider>
+            </ClerkProvider>
+
+      </body>
+    </html>
+  );
     }
 

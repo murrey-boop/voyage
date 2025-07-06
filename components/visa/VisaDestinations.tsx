@@ -21,7 +21,7 @@ export default function VisaDestinations() {
         {visaDestinations.map((destination, index) => (
           <div
             key={index}
-            className="visa-destination-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
+            className="visa-destination-card destination-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
           >
             <div className="flex items-center mb-4">
               <Image
@@ -39,10 +39,8 @@ export default function VisaDestinations() {
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               <strong>Requirements:</strong> {destination.requirements}
             </p>
-            <Button variant="link" asChild>
-              <a href={`/visa/${destination.country.toLowerCase().replace(/\s/g, '-')}`}>
-                Learn More
-              </a>
+            <Button className='apply-btn' variant="link" asChild>
+              <a href='/visa/apply'>Apply Now</a>
             </Button>
           </div>
         ))}

@@ -177,3 +177,101 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-background text-foreground;
   }
 }
+
+/* Visa Destination Card Styles */
+
+.destination-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px 0 rgba(20, 68, 172, 0.07);
+  border: 1px solid #e7eaf3;
+  padding: 1.5rem;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.destination-card:hover,
+.destination-card:focus-within {
+  box-shadow: 0 8px 24px 0 rgba(20, 68, 172, 0.13);
+  transform: scale(1.05);
+  border-color: #2563eb;
+}
+
+.destination-card img,
+.destination-card .img-fallback {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 1px 6px rgba(30, 64, 175, 0.07);
+  background: #f1f5fd;
+}
+
+.destination-card h3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1e293b;
+}
+
+.destination-card p {
+  color: #64748b;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.destination-card .apply-btn {
+  margin-top: auto;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.08);
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.destination-card .apply-btn:hover,
+.destination-card .apply-btn:focus {
+  background: #1e40af;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .destination-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 2px 16px 0 rgba(30, 41, 59, 0.1);
+  }
+  .destination-card img,
+  .destination-card .img-fallback {
+    border-color: #1e293b;
+    background: #233256;
+  }
+  .destination-card h3 {
+    color: #e0e7ef;
+  }
+  .destination-card p {
+    color: #cbd5e1;
+  }
+}
+
+/* Enable horizontal scroll on mobile */
+@media (max-width: 639px) {
+  .destination-card {
+    min-width: 220px;
+    max-width: 90vw;
+  }
+}

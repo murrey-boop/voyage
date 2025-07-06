@@ -1,4 +1,3 @@
-// app/visa/apply/Stepper.tsx
 import React from 'react';
 
 interface Props {
