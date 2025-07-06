@@ -9,6 +9,22 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', //  Cloudinary
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.istockphoto.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.shutterstock.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'source.unsplash.com',
       },
       {

@@ -260,9 +260,13 @@ exports.Prisma.VisaApplicationScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.DocumentScalarFieldEnum = {
+exports.Prisma.UploadedDocumentScalarFieldEnum = {
   id: 'id',
   fileName: 'fileName',
+  field: 'field',
+  originalName: 'originalName',
+  fileSize: 'fileSize',
+  fileType: 'fileType',
   fileUrl: 'fileUrl',
   publicId: 'publicId',
   uploadedAt: 'uploadedAt',
@@ -328,7 +332,7 @@ exports.Prisma.ModelName = {
   Wishlist: 'Wishlist',
   PasswordResetToken: 'PasswordResetToken',
   VisaApplication: 'VisaApplication',
-  Document: 'Document',
+  UploadedDocument: 'UploadedDocument',
   VisaPromo: 'VisaPromo'
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 /**
  * Client
@@ -79,10 +80,10 @@ export type PasswordResetToken = $Result.DefaultSelection<Prisma.$PasswordResetT
  */
 export type VisaApplication = $Result.DefaultSelection<Prisma.$VisaApplicationPayload>
 /**
- * Model Document
+ * Model UploadedDocument
  * 
  */
-export type Document = $Result.DefaultSelection<Prisma.$DocumentPayload>
+export type UploadedDocument = $Result.DefaultSelection<Prisma.$UploadedDocumentPayload>
 /**
  * Model VisaPromo
  * 
@@ -362,14 +363,14 @@ export class PrismaClient<
   get visaApplication(): Prisma.VisaApplicationDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.document`: Exposes CRUD operations for the **Document** model.
+   * `prisma.uploadedDocument`: Exposes CRUD operations for the **UploadedDocument** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Documents
-    * const documents = await prisma.document.findMany()
+    * // Fetch zero or more UploadedDocuments
+    * const uploadedDocuments = await prisma.uploadedDocument.findMany()
     * ```
     */
-  get document(): Prisma.DocumentDelegate<ExtArgs, ClientOptions>;
+  get uploadedDocument(): Prisma.UploadedDocumentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.visaPromo`: Exposes CRUD operations for the **VisaPromo** model.
@@ -833,7 +834,7 @@ export namespace Prisma {
     Wishlist: 'Wishlist',
     PasswordResetToken: 'PasswordResetToken',
     VisaApplication: 'VisaApplication',
-    Document: 'Document',
+    UploadedDocument: 'UploadedDocument',
     VisaPromo: 'VisaPromo'
   };
 
@@ -853,7 +854,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "favorite" | "session" | "verificationToken" | "tour" | "tourAvailability" | "booking" | "deal" | "adminLog" | "wishlist" | "passwordResetToken" | "visaApplication" | "document" | "visaPromo"
+      modelProps: "user" | "account" | "favorite" | "session" | "verificationToken" | "tour" | "tourAvailability" | "booking" | "deal" | "adminLog" | "wishlist" | "passwordResetToken" | "visaApplication" | "uploadedDocument" | "visaPromo"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1819,77 +1820,77 @@ export namespace Prisma {
           }
         }
       }
-      Document: {
-        payload: Prisma.$DocumentPayload<ExtArgs>
-        fields: Prisma.DocumentFieldRefs
+      UploadedDocument: {
+        payload: Prisma.$UploadedDocumentPayload<ExtArgs>
+        fields: Prisma.UploadedDocumentFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.DocumentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload> | null
+            args: Prisma.UploadedDocumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.DocumentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           findFirst: {
-            args: Prisma.DocumentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload> | null
+            args: Prisma.UploadedDocumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.DocumentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           findMany: {
-            args: Prisma.DocumentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>[]
+            args: Prisma.UploadedDocumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
           }
           create: {
-            args: Prisma.DocumentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           createMany: {
-            args: Prisma.DocumentCreateManyArgs<ExtArgs>
+            args: Prisma.UploadedDocumentCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.DocumentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>[]
+            args: Prisma.UploadedDocumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
           }
           delete: {
-            args: Prisma.DocumentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           update: {
-            args: Prisma.DocumentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           deleteMany: {
-            args: Prisma.DocumentDeleteManyArgs<ExtArgs>
+            args: Prisma.UploadedDocumentDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.DocumentUpdateManyArgs<ExtArgs>
+            args: Prisma.UploadedDocumentUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.DocumentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>[]
+            args: Prisma.UploadedDocumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
           }
           upsert: {
-            args: Prisma.DocumentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DocumentPayload>
+            args: Prisma.UploadedDocumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
           }
           aggregate: {
-            args: Prisma.DocumentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDocument>
+            args: Prisma.UploadedDocumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUploadedDocument>
           }
           groupBy: {
-            args: Prisma.DocumentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DocumentGroupByOutputType>[]
+            args: Prisma.UploadedDocumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UploadedDocumentGroupByOutputType>[]
           }
           count: {
-            args: Prisma.DocumentCountArgs<ExtArgs>
-            result: $Utils.Optional<DocumentCountAggregateOutputType> | number
+            args: Prisma.UploadedDocumentCountArgs<ExtArgs>
+            result: $Utils.Optional<UploadedDocumentCountAggregateOutputType> | number
           }
         }
       }
@@ -2068,7 +2069,7 @@ export namespace Prisma {
     wishlist?: WishlistOmit
     passwordResetToken?: PasswordResetTokenOmit
     visaApplication?: VisaApplicationOmit
-    document?: DocumentOmit
+    uploadedDocument?: UploadedDocumentOmit
     visaPromo?: VisaPromoOmit
   }
 
@@ -2351,7 +2352,7 @@ export namespace Prisma {
    * VisaApplicationCountOutputType without action
    */
   export type VisaApplicationCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
   }
 
 
@@ -16348,7 +16349,7 @@ export namespace Prisma {
   export type $VisaApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "VisaApplication"
     objects: {
-      documents: Prisma.$DocumentPayload<ExtArgs>[]
+      documents: Prisma.$UploadedDocumentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -16754,7 +16755,7 @@ export namespace Prisma {
    */
   export interface Prisma__VisaApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    documents<T extends VisaApplication$documentsArgs<ExtArgs> = {}>(args?: Subset<T, VisaApplication$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    documents<T extends VisaApplication$documentsArgs<ExtArgs> = {}>(args?: Subset<T, VisaApplication$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17185,23 +17186,23 @@ export namespace Prisma {
    */
   export type VisaApplication$documentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
-    where?: DocumentWhereInput
-    orderBy?: DocumentOrderByWithRelationInput | DocumentOrderByWithRelationInput[]
-    cursor?: DocumentWhereUniqueInput
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    where?: UploadedDocumentWhereInput
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    cursor?: UploadedDocumentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DocumentScalarFieldEnum | DocumentScalarFieldEnum[]
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
   }
 
   /**
@@ -17224,36 +17225,58 @@ export namespace Prisma {
 
 
   /**
-   * Model Document
+   * Model UploadedDocument
    */
 
-  export type AggregateDocument = {
-    _count: DocumentCountAggregateOutputType | null
-    _min: DocumentMinAggregateOutputType | null
-    _max: DocumentMaxAggregateOutputType | null
+  export type AggregateUploadedDocument = {
+    _count: UploadedDocumentCountAggregateOutputType | null
+    _avg: UploadedDocumentAvgAggregateOutputType | null
+    _sum: UploadedDocumentSumAggregateOutputType | null
+    _min: UploadedDocumentMinAggregateOutputType | null
+    _max: UploadedDocumentMaxAggregateOutputType | null
   }
 
-  export type DocumentMinAggregateOutputType = {
+  export type UploadedDocumentAvgAggregateOutputType = {
+    fileSize: number | null
+  }
+
+  export type UploadedDocumentSumAggregateOutputType = {
+    fileSize: number | null
+  }
+
+  export type UploadedDocumentMinAggregateOutputType = {
     id: string | null
     fileName: string | null
+    field: string | null
+    originalName: string | null
+    fileSize: number | null
+    fileType: string | null
     fileUrl: string | null
     publicId: string | null
     uploadedAt: Date | null
     visaAppId: string | null
   }
 
-  export type DocumentMaxAggregateOutputType = {
+  export type UploadedDocumentMaxAggregateOutputType = {
     id: string | null
     fileName: string | null
+    field: string | null
+    originalName: string | null
+    fileSize: number | null
+    fileType: string | null
     fileUrl: string | null
     publicId: string | null
     uploadedAt: Date | null
     visaAppId: string | null
   }
 
-  export type DocumentCountAggregateOutputType = {
+  export type UploadedDocumentCountAggregateOutputType = {
     id: number
     fileName: number
+    field: number
+    originalName: number
+    fileSize: number
+    fileType: number
     fileUrl: number
     publicId: number
     uploadedAt: number
@@ -17262,27 +17285,47 @@ export namespace Prisma {
   }
 
 
-  export type DocumentMinAggregateInputType = {
+  export type UploadedDocumentAvgAggregateInputType = {
+    fileSize?: true
+  }
+
+  export type UploadedDocumentSumAggregateInputType = {
+    fileSize?: true
+  }
+
+  export type UploadedDocumentMinAggregateInputType = {
     id?: true
     fileName?: true
+    field?: true
+    originalName?: true
+    fileSize?: true
+    fileType?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
     visaAppId?: true
   }
 
-  export type DocumentMaxAggregateInputType = {
+  export type UploadedDocumentMaxAggregateInputType = {
     id?: true
     fileName?: true
+    field?: true
+    originalName?: true
+    fileSize?: true
+    fileType?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
     visaAppId?: true
   }
 
-  export type DocumentCountAggregateInputType = {
+  export type UploadedDocumentCountAggregateInputType = {
     id?: true
     fileName?: true
+    field?: true
+    originalName?: true
+    fileSize?: true
+    fileType?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
@@ -17290,296 +17333,336 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type DocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Document to aggregate.
+     * Filter which UploadedDocument to aggregate.
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Documents to fetch.
+     * Determine the order of UploadedDocuments to fetch.
      */
-    orderBy?: DocumentOrderByWithRelationInput | DocumentOrderByWithRelationInput[]
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: DocumentWhereUniqueInput
+    cursor?: UploadedDocumentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Documents from the position of the cursor.
+     * Take `±n` UploadedDocuments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Documents.
+     * Skip the first `n` UploadedDocuments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Documents
+     * Count returned UploadedDocuments
     **/
-    _count?: true | DocumentCountAggregateInputType
+    _count?: true | UploadedDocumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UploadedDocumentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UploadedDocumentSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: DocumentMinAggregateInputType
+    _min?: UploadedDocumentMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: DocumentMaxAggregateInputType
+    _max?: UploadedDocumentMaxAggregateInputType
   }
 
-  export type GetDocumentAggregateType<T extends DocumentAggregateArgs> = {
-        [P in keyof T & keyof AggregateDocument]: P extends '_count' | 'count'
+  export type GetUploadedDocumentAggregateType<T extends UploadedDocumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateUploadedDocument]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDocument[P]>
-      : GetScalarType<T[P], AggregateDocument[P]>
+        : GetScalarType<T[P], AggregateUploadedDocument[P]>
+      : GetScalarType<T[P], AggregateUploadedDocument[P]>
   }
 
 
 
 
-  export type DocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DocumentWhereInput
-    orderBy?: DocumentOrderByWithAggregationInput | DocumentOrderByWithAggregationInput[]
-    by: DocumentScalarFieldEnum[] | DocumentScalarFieldEnum
-    having?: DocumentScalarWhereWithAggregatesInput
+  export type UploadedDocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UploadedDocumentWhereInput
+    orderBy?: UploadedDocumentOrderByWithAggregationInput | UploadedDocumentOrderByWithAggregationInput[]
+    by: UploadedDocumentScalarFieldEnum[] | UploadedDocumentScalarFieldEnum
+    having?: UploadedDocumentScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: DocumentCountAggregateInputType | true
-    _min?: DocumentMinAggregateInputType
-    _max?: DocumentMaxAggregateInputType
+    _count?: UploadedDocumentCountAggregateInputType | true
+    _avg?: UploadedDocumentAvgAggregateInputType
+    _sum?: UploadedDocumentSumAggregateInputType
+    _min?: UploadedDocumentMinAggregateInputType
+    _max?: UploadedDocumentMaxAggregateInputType
   }
 
-  export type DocumentGroupByOutputType = {
+  export type UploadedDocumentGroupByOutputType = {
     id: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt: Date
     visaAppId: string
-    _count: DocumentCountAggregateOutputType | null
-    _min: DocumentMinAggregateOutputType | null
-    _max: DocumentMaxAggregateOutputType | null
+    _count: UploadedDocumentCountAggregateOutputType | null
+    _avg: UploadedDocumentAvgAggregateOutputType | null
+    _sum: UploadedDocumentSumAggregateOutputType | null
+    _min: UploadedDocumentMinAggregateOutputType | null
+    _max: UploadedDocumentMaxAggregateOutputType | null
   }
 
-  type GetDocumentGroupByPayload<T extends DocumentGroupByArgs> = Prisma.PrismaPromise<
+  type GetUploadedDocumentGroupByPayload<T extends UploadedDocumentGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<DocumentGroupByOutputType, T['by']> &
+      PickEnumerable<UploadedDocumentGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof DocumentGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UploadedDocumentGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], DocumentGroupByOutputType[P]>
-            : GetScalarType<T[P], DocumentGroupByOutputType[P]>
+              : GetScalarType<T[P], UploadedDocumentGroupByOutputType[P]>
+            : GetScalarType<T[P], UploadedDocumentGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type DocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UploadedDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fileName?: boolean
+    field?: boolean
+    originalName?: boolean
+    fileSize?: boolean
+    fileType?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
     visaAppId?: boolean
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["document"]>
+  }, ExtArgs["result"]["uploadedDocument"]>
 
-  export type DocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UploadedDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fileName?: boolean
+    field?: boolean
+    originalName?: boolean
+    fileSize?: boolean
+    fileType?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
     visaAppId?: boolean
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["document"]>
+  }, ExtArgs["result"]["uploadedDocument"]>
 
-  export type DocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UploadedDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fileName?: boolean
+    field?: boolean
+    originalName?: boolean
+    fileSize?: boolean
+    fileType?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
     visaAppId?: boolean
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["document"]>
+  }, ExtArgs["result"]["uploadedDocument"]>
 
-  export type DocumentSelectScalar = {
+  export type UploadedDocumentSelectScalar = {
     id?: boolean
     fileName?: boolean
+    field?: boolean
+    originalName?: boolean
+    fileSize?: boolean
+    fileType?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
     visaAppId?: boolean
   }
 
-  export type DocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fileName" | "fileUrl" | "publicId" | "uploadedAt" | "visaAppId", ExtArgs["result"]["document"]>
-  export type DocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fileName" | "field" | "originalName" | "fileSize" | "fileType" | "fileUrl" | "publicId" | "uploadedAt" | "visaAppId", ExtArgs["result"]["uploadedDocument"]>
+  export type UploadedDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
   }
-  export type DocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
   }
-  export type DocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
   }
 
-  export type $DocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Document"
+  export type $UploadedDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UploadedDocument"
     objects: {
       visaApp: Prisma.$VisaApplicationPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       fileName: string
+      field: string
+      originalName: string
+      fileSize: number
+      fileType: string
       fileUrl: string
       publicId: string
       uploadedAt: Date
       visaAppId: string
-    }, ExtArgs["result"]["document"]>
+    }, ExtArgs["result"]["uploadedDocument"]>
     composites: {}
   }
 
-  type DocumentGetPayload<S extends boolean | null | undefined | DocumentDefaultArgs> = $Result.GetResult<Prisma.$DocumentPayload, S>
+  type UploadedDocumentGetPayload<S extends boolean | null | undefined | UploadedDocumentDefaultArgs> = $Result.GetResult<Prisma.$UploadedDocumentPayload, S>
 
-  type DocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DocumentCountAggregateInputType | true
+  type UploadedDocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UploadedDocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UploadedDocumentCountAggregateInputType | true
     }
 
-  export interface DocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Document'], meta: { name: 'Document' } }
+  export interface UploadedDocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UploadedDocument'], meta: { name: 'UploadedDocument' } }
     /**
-     * Find zero or one Document that matches the filter.
-     * @param {DocumentFindUniqueArgs} args - Arguments to find a Document
+     * Find zero or one UploadedDocument that matches the filter.
+     * @param {UploadedDocumentFindUniqueArgs} args - Arguments to find a UploadedDocument
      * @example
-     * // Get one Document
-     * const document = await prisma.document.findUnique({
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends DocumentFindUniqueArgs>(args: SelectSubset<T, DocumentFindUniqueArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UploadedDocumentFindUniqueArgs>(args: SelectSubset<T, UploadedDocumentFindUniqueArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Document that matches the filter or throw an error with `error.code='P2025'`
+     * Find one UploadedDocument that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {DocumentFindUniqueOrThrowArgs} args - Arguments to find a Document
+     * @param {UploadedDocumentFindUniqueOrThrowArgs} args - Arguments to find a UploadedDocument
      * @example
-     * // Get one Document
-     * const document = await prisma.document.findUniqueOrThrow({
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends DocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, DocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UploadedDocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, UploadedDocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Document that matches the filter.
+     * Find the first UploadedDocument that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentFindFirstArgs} args - Arguments to find a Document
+     * @param {UploadedDocumentFindFirstArgs} args - Arguments to find a UploadedDocument
      * @example
-     * // Get one Document
-     * const document = await prisma.document.findFirst({
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends DocumentFindFirstArgs>(args?: SelectSubset<T, DocumentFindFirstArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UploadedDocumentFindFirstArgs>(args?: SelectSubset<T, UploadedDocumentFindFirstArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Document that matches the filter or
+     * Find the first UploadedDocument that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentFindFirstOrThrowArgs} args - Arguments to find a Document
+     * @param {UploadedDocumentFindFirstOrThrowArgs} args - Arguments to find a UploadedDocument
      * @example
-     * // Get one Document
-     * const document = await prisma.document.findFirstOrThrow({
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends DocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, DocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UploadedDocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, UploadedDocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Documents that matches the filter.
+     * Find zero or more UploadedDocuments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UploadedDocumentFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Documents
-     * const documents = await prisma.document.findMany()
+     * // Get all UploadedDocuments
+     * const uploadedDocuments = await prisma.uploadedDocument.findMany()
      * 
-     * // Get first 10 Documents
-     * const documents = await prisma.document.findMany({ take: 10 })
+     * // Get first 10 UploadedDocuments
+     * const uploadedDocuments = await prisma.uploadedDocument.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const documentWithIdOnly = await prisma.document.findMany({ select: { id: true } })
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends DocumentFindManyArgs>(args?: SelectSubset<T, DocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UploadedDocumentFindManyArgs>(args?: SelectSubset<T, UploadedDocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Document.
-     * @param {DocumentCreateArgs} args - Arguments to create a Document.
+     * Create a UploadedDocument.
+     * @param {UploadedDocumentCreateArgs} args - Arguments to create a UploadedDocument.
      * @example
-     * // Create one Document
-     * const Document = await prisma.document.create({
+     * // Create one UploadedDocument
+     * const UploadedDocument = await prisma.uploadedDocument.create({
      *   data: {
-     *     // ... data to create a Document
+     *     // ... data to create a UploadedDocument
      *   }
      * })
      * 
      */
-    create<T extends DocumentCreateArgs>(args: SelectSubset<T, DocumentCreateArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UploadedDocumentCreateArgs>(args: SelectSubset<T, UploadedDocumentCreateArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Documents.
-     * @param {DocumentCreateManyArgs} args - Arguments to create many Documents.
+     * Create many UploadedDocuments.
+     * @param {UploadedDocumentCreateManyArgs} args - Arguments to create many UploadedDocuments.
      * @example
-     * // Create many Documents
-     * const document = await prisma.document.createMany({
+     * // Create many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends DocumentCreateManyArgs>(args?: SelectSubset<T, DocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends UploadedDocumentCreateManyArgs>(args?: SelectSubset<T, UploadedDocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Documents and returns the data saved in the database.
-     * @param {DocumentCreateManyAndReturnArgs} args - Arguments to create many Documents.
+     * Create many UploadedDocuments and returns the data saved in the database.
+     * @param {UploadedDocumentCreateManyAndReturnArgs} args - Arguments to create many UploadedDocuments.
      * @example
-     * // Create many Documents
-     * const document = await prisma.document.createManyAndReturn({
+     * // Create many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Documents and only return the `id`
-     * const documentWithIdOnly = await prisma.document.createManyAndReturn({
+     * // Create many UploadedDocuments and only return the `id`
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -17589,28 +17672,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends DocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, DocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UploadedDocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, UploadedDocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Document.
-     * @param {DocumentDeleteArgs} args - Arguments to delete one Document.
+     * Delete a UploadedDocument.
+     * @param {UploadedDocumentDeleteArgs} args - Arguments to delete one UploadedDocument.
      * @example
-     * // Delete one Document
-     * const Document = await prisma.document.delete({
+     * // Delete one UploadedDocument
+     * const UploadedDocument = await prisma.uploadedDocument.delete({
      *   where: {
-     *     // ... filter to delete one Document
+     *     // ... filter to delete one UploadedDocument
      *   }
      * })
      * 
      */
-    delete<T extends DocumentDeleteArgs>(args: SelectSubset<T, DocumentDeleteArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UploadedDocumentDeleteArgs>(args: SelectSubset<T, UploadedDocumentDeleteArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Document.
-     * @param {DocumentUpdateArgs} args - Arguments to update one Document.
+     * Update one UploadedDocument.
+     * @param {UploadedDocumentUpdateArgs} args - Arguments to update one UploadedDocument.
      * @example
-     * // Update one Document
-     * const document = await prisma.document.update({
+     * // Update one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -17620,30 +17703,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends DocumentUpdateArgs>(args: SelectSubset<T, DocumentUpdateArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UploadedDocumentUpdateArgs>(args: SelectSubset<T, UploadedDocumentUpdateArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Documents.
-     * @param {DocumentDeleteManyArgs} args - Arguments to filter Documents to delete.
+     * Delete zero or more UploadedDocuments.
+     * @param {UploadedDocumentDeleteManyArgs} args - Arguments to filter UploadedDocuments to delete.
      * @example
-     * // Delete a few Documents
-     * const { count } = await prisma.document.deleteMany({
+     * // Delete a few UploadedDocuments
+     * const { count } = await prisma.uploadedDocument.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends DocumentDeleteManyArgs>(args?: SelectSubset<T, DocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends UploadedDocumentDeleteManyArgs>(args?: SelectSubset<T, UploadedDocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Documents.
+     * Update zero or more UploadedDocuments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {UploadedDocumentUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Documents
-     * const document = await prisma.document.updateMany({
+     * // Update many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -17653,14 +17736,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends DocumentUpdateManyArgs>(args: SelectSubset<T, DocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends UploadedDocumentUpdateManyArgs>(args: SelectSubset<T, UploadedDocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Documents and returns the data updated in the database.
-     * @param {DocumentUpdateManyAndReturnArgs} args - Arguments to update many Documents.
+     * Update zero or more UploadedDocuments and returns the data updated in the database.
+     * @param {UploadedDocumentUpdateManyAndReturnArgs} args - Arguments to update many UploadedDocuments.
      * @example
-     * // Update many Documents
-     * const document = await prisma.document.updateManyAndReturn({
+     * // Update many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -17669,8 +17752,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Documents and only return the `id`
-     * const documentWithIdOnly = await prisma.document.updateManyAndReturn({
+     * // Update zero or more UploadedDocuments and only return the `id`
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -17683,56 +17766,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends DocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, DocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends UploadedDocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, UploadedDocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Document.
-     * @param {DocumentUpsertArgs} args - Arguments to update or create a Document.
+     * Create or update one UploadedDocument.
+     * @param {UploadedDocumentUpsertArgs} args - Arguments to update or create a UploadedDocument.
      * @example
-     * // Update or create a Document
-     * const document = await prisma.document.upsert({
+     * // Update or create a UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.upsert({
      *   create: {
-     *     // ... data to create a Document
+     *     // ... data to create a UploadedDocument
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Document we want to update
+     *     // ... the filter for the UploadedDocument we want to update
      *   }
      * })
      */
-    upsert<T extends DocumentUpsertArgs>(args: SelectSubset<T, DocumentUpsertArgs<ExtArgs>>): Prisma__DocumentClient<$Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UploadedDocumentUpsertArgs>(args: SelectSubset<T, UploadedDocumentUpsertArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Documents.
+     * Count the number of UploadedDocuments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentCountArgs} args - Arguments to filter Documents to count.
+     * @param {UploadedDocumentCountArgs} args - Arguments to filter UploadedDocuments to count.
      * @example
-     * // Count the number of Documents
-     * const count = await prisma.document.count({
+     * // Count the number of UploadedDocuments
+     * const count = await prisma.uploadedDocument.count({
      *   where: {
-     *     // ... the filter for the Documents we want to count
+     *     // ... the filter for the UploadedDocuments we want to count
      *   }
      * })
     **/
-    count<T extends DocumentCountArgs>(
-      args?: Subset<T, DocumentCountArgs>,
+    count<T extends UploadedDocumentCountArgs>(
+      args?: Subset<T, UploadedDocumentCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], DocumentCountAggregateOutputType>
+          : GetScalarType<T['select'], UploadedDocumentCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Document.
+     * Allows you to perform aggregations operations on a UploadedDocument.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UploadedDocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -17752,13 +17835,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends DocumentAggregateArgs>(args: Subset<T, DocumentAggregateArgs>): Prisma.PrismaPromise<GetDocumentAggregateType<T>>
+    aggregate<T extends UploadedDocumentAggregateArgs>(args: Subset<T, UploadedDocumentAggregateArgs>): Prisma.PrismaPromise<GetUploadedDocumentAggregateType<T>>
 
     /**
-     * Group by Document.
+     * Group by UploadedDocument.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DocumentGroupByArgs} args - Group by arguments.
+     * @param {UploadedDocumentGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -17773,14 +17856,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends DocumentGroupByArgs,
+      T extends UploadedDocumentGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DocumentGroupByArgs['orderBy'] }
-        : { orderBy?: DocumentGroupByArgs['orderBy'] },
+        ? { orderBy: UploadedDocumentGroupByArgs['orderBy'] }
+        : { orderBy?: UploadedDocumentGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -17829,20 +17912,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, DocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, UploadedDocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUploadedDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Document model
+   * Fields of the UploadedDocument model
    */
-  readonly fields: DocumentFieldRefs;
+  readonly fields: UploadedDocumentFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Document.
+   * The delegate class that acts as a "Promise-like" for UploadedDocument.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UploadedDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     visaApp<T extends VisaApplicationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VisaApplicationDefaultArgs<ExtArgs>>): Prisma__VisaApplicationClient<$Result.GetResult<Prisma.$VisaApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -17871,426 +17954,430 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Document model
+   * Fields of the UploadedDocument model
    */
-  interface DocumentFieldRefs {
-    readonly id: FieldRef<"Document", 'String'>
-    readonly fileName: FieldRef<"Document", 'String'>
-    readonly fileUrl: FieldRef<"Document", 'String'>
-    readonly publicId: FieldRef<"Document", 'String'>
-    readonly uploadedAt: FieldRef<"Document", 'DateTime'>
-    readonly visaAppId: FieldRef<"Document", 'String'>
+  interface UploadedDocumentFieldRefs {
+    readonly id: FieldRef<"UploadedDocument", 'String'>
+    readonly fileName: FieldRef<"UploadedDocument", 'String'>
+    readonly field: FieldRef<"UploadedDocument", 'String'>
+    readonly originalName: FieldRef<"UploadedDocument", 'String'>
+    readonly fileSize: FieldRef<"UploadedDocument", 'Int'>
+    readonly fileType: FieldRef<"UploadedDocument", 'String'>
+    readonly fileUrl: FieldRef<"UploadedDocument", 'String'>
+    readonly publicId: FieldRef<"UploadedDocument", 'String'>
+    readonly uploadedAt: FieldRef<"UploadedDocument", 'DateTime'>
+    readonly visaAppId: FieldRef<"UploadedDocument", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Document findUnique
+   * UploadedDocument findUnique
    */
-  export type DocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter, which Document to fetch.
+     * Filter, which UploadedDocument to fetch.
      */
-    where: DocumentWhereUniqueInput
+    where: UploadedDocumentWhereUniqueInput
   }
 
   /**
-   * Document findUniqueOrThrow
+   * UploadedDocument findUniqueOrThrow
    */
-  export type DocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter, which Document to fetch.
+     * Filter, which UploadedDocument to fetch.
      */
-    where: DocumentWhereUniqueInput
+    where: UploadedDocumentWhereUniqueInput
   }
 
   /**
-   * Document findFirst
+   * UploadedDocument findFirst
    */
-  export type DocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter, which Document to fetch.
+     * Filter, which UploadedDocument to fetch.
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Documents to fetch.
+     * Determine the order of UploadedDocuments to fetch.
      */
-    orderBy?: DocumentOrderByWithRelationInput | DocumentOrderByWithRelationInput[]
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Documents.
+     * Sets the position for searching for UploadedDocuments.
      */
-    cursor?: DocumentWhereUniqueInput
+    cursor?: UploadedDocumentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Documents from the position of the cursor.
+     * Take `±n` UploadedDocuments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Documents.
+     * Skip the first `n` UploadedDocuments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Documents.
+     * Filter by unique combinations of UploadedDocuments.
      */
-    distinct?: DocumentScalarFieldEnum | DocumentScalarFieldEnum[]
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
   }
 
   /**
-   * Document findFirstOrThrow
+   * UploadedDocument findFirstOrThrow
    */
-  export type DocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter, which Document to fetch.
+     * Filter, which UploadedDocument to fetch.
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Documents to fetch.
+     * Determine the order of UploadedDocuments to fetch.
      */
-    orderBy?: DocumentOrderByWithRelationInput | DocumentOrderByWithRelationInput[]
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Documents.
+     * Sets the position for searching for UploadedDocuments.
      */
-    cursor?: DocumentWhereUniqueInput
+    cursor?: UploadedDocumentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Documents from the position of the cursor.
+     * Take `±n` UploadedDocuments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Documents.
+     * Skip the first `n` UploadedDocuments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Documents.
+     * Filter by unique combinations of UploadedDocuments.
      */
-    distinct?: DocumentScalarFieldEnum | DocumentScalarFieldEnum[]
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
   }
 
   /**
-   * Document findMany
+   * UploadedDocument findMany
    */
-  export type DocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter, which Documents to fetch.
+     * Filter, which UploadedDocuments to fetch.
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Documents to fetch.
+     * Determine the order of UploadedDocuments to fetch.
      */
-    orderBy?: DocumentOrderByWithRelationInput | DocumentOrderByWithRelationInput[]
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Documents.
+     * Sets the position for listing UploadedDocuments.
      */
-    cursor?: DocumentWhereUniqueInput
+    cursor?: UploadedDocumentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Documents from the position of the cursor.
+     * Take `±n` UploadedDocuments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Documents.
+     * Skip the first `n` UploadedDocuments.
      */
     skip?: number
-    distinct?: DocumentScalarFieldEnum | DocumentScalarFieldEnum[]
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
   }
 
   /**
-   * Document create
+   * UploadedDocument create
    */
-  export type DocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * The data needed to create a Document.
+     * The data needed to create a UploadedDocument.
      */
-    data: XOR<DocumentCreateInput, DocumentUncheckedCreateInput>
+    data: XOR<UploadedDocumentCreateInput, UploadedDocumentUncheckedCreateInput>
   }
 
   /**
-   * Document createMany
+   * UploadedDocument createMany
    */
-  export type DocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Documents.
+     * The data used to create many UploadedDocuments.
      */
-    data: DocumentCreateManyInput | DocumentCreateManyInput[]
+    data: UploadedDocumentCreateManyInput | UploadedDocumentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Document createManyAndReturn
+   * UploadedDocument createManyAndReturn
    */
-  export type DocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelectCreateManyAndReturn<ExtArgs> | null
+    select?: UploadedDocumentSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
-     * The data used to create many Documents.
+     * The data used to create many UploadedDocuments.
      */
-    data: DocumentCreateManyInput | DocumentCreateManyInput[]
+    data: UploadedDocumentCreateManyInput | UploadedDocumentCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: UploadedDocumentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Document update
+   * UploadedDocument update
    */
-  export type DocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * The data needed to update a Document.
+     * The data needed to update a UploadedDocument.
      */
-    data: XOR<DocumentUpdateInput, DocumentUncheckedUpdateInput>
+    data: XOR<UploadedDocumentUpdateInput, UploadedDocumentUncheckedUpdateInput>
     /**
-     * Choose, which Document to update.
+     * Choose, which UploadedDocument to update.
      */
-    where: DocumentWhereUniqueInput
+    where: UploadedDocumentWhereUniqueInput
   }
 
   /**
-   * Document updateMany
+   * UploadedDocument updateMany
    */
-  export type DocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Documents.
+     * The data used to update UploadedDocuments.
      */
-    data: XOR<DocumentUpdateManyMutationInput, DocumentUncheckedUpdateManyInput>
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyInput>
     /**
-     * Filter which Documents to update
+     * Filter which UploadedDocuments to update
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
-     * Limit how many Documents to update.
+     * Limit how many UploadedDocuments to update.
      */
     limit?: number
   }
 
   /**
-   * Document updateManyAndReturn
+   * UploadedDocument updateManyAndReturn
    */
-  export type DocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: UploadedDocumentSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
-     * The data used to update Documents.
+     * The data used to update UploadedDocuments.
      */
-    data: XOR<DocumentUpdateManyMutationInput, DocumentUncheckedUpdateManyInput>
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyInput>
     /**
-     * Filter which Documents to update
+     * Filter which UploadedDocuments to update
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
-     * Limit how many Documents to update.
+     * Limit how many UploadedDocuments to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: UploadedDocumentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Document upsert
+   * UploadedDocument upsert
    */
-  export type DocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * The filter to search for the Document to update in case it exists.
+     * The filter to search for the UploadedDocument to update in case it exists.
      */
-    where: DocumentWhereUniqueInput
+    where: UploadedDocumentWhereUniqueInput
     /**
-     * In case the Document found by the `where` argument doesn't exist, create a new Document with this data.
+     * In case the UploadedDocument found by the `where` argument doesn't exist, create a new UploadedDocument with this data.
      */
-    create: XOR<DocumentCreateInput, DocumentUncheckedCreateInput>
+    create: XOR<UploadedDocumentCreateInput, UploadedDocumentUncheckedCreateInput>
     /**
-     * In case the Document was found with the provided `where` argument, update it with this data.
+     * In case the UploadedDocument was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<DocumentUpdateInput, DocumentUncheckedUpdateInput>
+    update: XOR<UploadedDocumentUpdateInput, UploadedDocumentUncheckedUpdateInput>
   }
 
   /**
-   * Document delete
+   * UploadedDocument delete
    */
-  export type DocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
     /**
-     * Filter which Document to delete.
+     * Filter which UploadedDocument to delete.
      */
-    where: DocumentWhereUniqueInput
+    where: UploadedDocumentWhereUniqueInput
   }
 
   /**
-   * Document deleteMany
+   * UploadedDocument deleteMany
    */
-  export type DocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Documents to delete
+     * Filter which UploadedDocuments to delete
      */
-    where?: DocumentWhereInput
+    where?: UploadedDocumentWhereInput
     /**
-     * Limit how many Documents to delete.
+     * Limit how many UploadedDocuments to delete.
      */
     limit?: number
   }
 
   /**
-   * Document without action
+   * UploadedDocument without action
    */
-  export type DocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UploadedDocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Document
+     * Select specific fields to fetch from the UploadedDocument
      */
-    select?: DocumentSelect<ExtArgs> | null
+    select?: UploadedDocumentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Document
+     * Omit specific fields from the UploadedDocument
      */
-    omit?: DocumentOmit<ExtArgs> | null
+    omit?: UploadedDocumentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DocumentInclude<ExtArgs> | null
+    include?: UploadedDocumentInclude<ExtArgs> | null
   }
 
 
@@ -19607,16 +19694,20 @@ export namespace Prisma {
   export type VisaApplicationScalarFieldEnum = (typeof VisaApplicationScalarFieldEnum)[keyof typeof VisaApplicationScalarFieldEnum]
 
 
-  export const DocumentScalarFieldEnum: {
+  export const UploadedDocumentScalarFieldEnum: {
     id: 'id',
     fileName: 'fileName',
+    field: 'field',
+    originalName: 'originalName',
+    fileSize: 'fileSize',
+    fileType: 'fileType',
     fileUrl: 'fileUrl',
     publicId: 'publicId',
     uploadedAt: 'uploadedAt',
     visaAppId: 'visaAppId'
   };
 
-  export type DocumentScalarFieldEnum = (typeof DocumentScalarFieldEnum)[keyof typeof DocumentScalarFieldEnum]
+  export type UploadedDocumentScalarFieldEnum = (typeof UploadedDocumentScalarFieldEnum)[keyof typeof UploadedDocumentScalarFieldEnum]
 
 
   export const VisaPromoScalarFieldEnum: {
@@ -20666,7 +20757,7 @@ export namespace Prisma {
     travelDate?: DateTimeFilter<"VisaApplication"> | Date | string
     returnDate?: DateTimeFilter<"VisaApplication"> | Date | string
     createdAt?: DateTimeFilter<"VisaApplication"> | Date | string
-    documents?: DocumentListRelationFilter
+    documents?: UploadedDocumentListRelationFilter
   }
 
   export type VisaApplicationOrderByWithRelationInput = {
@@ -20679,7 +20770,7 @@ export namespace Prisma {
     travelDate?: SortOrder
     returnDate?: SortOrder
     createdAt?: SortOrder
-    documents?: DocumentOrderByRelationAggregateInput
+    documents?: UploadedDocumentOrderByRelationAggregateInput
   }
 
   export type VisaApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -20695,7 +20786,7 @@ export namespace Prisma {
     travelDate?: DateTimeFilter<"VisaApplication"> | Date | string
     returnDate?: DateTimeFilter<"VisaApplication"> | Date | string
     createdAt?: DateTimeFilter<"VisaApplication"> | Date | string
-    documents?: DocumentListRelationFilter
+    documents?: UploadedDocumentListRelationFilter
   }, "id">
 
   export type VisaApplicationOrderByWithAggregationInput = {
@@ -20728,22 +20819,30 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"VisaApplication"> | Date | string
   }
 
-  export type DocumentWhereInput = {
-    AND?: DocumentWhereInput | DocumentWhereInput[]
-    OR?: DocumentWhereInput[]
-    NOT?: DocumentWhereInput | DocumentWhereInput[]
-    id?: StringFilter<"Document"> | string
-    fileName?: StringFilter<"Document"> | string
-    fileUrl?: StringFilter<"Document"> | string
-    publicId?: StringFilter<"Document"> | string
-    uploadedAt?: DateTimeFilter<"Document"> | Date | string
-    visaAppId?: StringFilter<"Document"> | string
+  export type UploadedDocumentWhereInput = {
+    AND?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    OR?: UploadedDocumentWhereInput[]
+    NOT?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    id?: StringFilter<"UploadedDocument"> | string
+    fileName?: StringFilter<"UploadedDocument"> | string
+    field?: StringFilter<"UploadedDocument"> | string
+    originalName?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileUrl?: StringFilter<"UploadedDocument"> | string
+    publicId?: StringFilter<"UploadedDocument"> | string
+    uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    visaAppId?: StringFilter<"UploadedDocument"> | string
     visaApp?: XOR<VisaApplicationScalarRelationFilter, VisaApplicationWhereInput>
   }
 
-  export type DocumentOrderByWithRelationInput = {
+  export type UploadedDocumentOrderByWithRelationInput = {
     id?: SortOrder
     fileName?: SortOrder
+    field?: SortOrder
+    originalName?: SortOrder
+    fileSize?: SortOrder
+    fileType?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -20751,41 +20850,55 @@ export namespace Prisma {
     visaApp?: VisaApplicationOrderByWithRelationInput
   }
 
-  export type DocumentWhereUniqueInput = Prisma.AtLeast<{
+  export type UploadedDocumentWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: DocumentWhereInput | DocumentWhereInput[]
-    OR?: DocumentWhereInput[]
-    NOT?: DocumentWhereInput | DocumentWhereInput[]
-    fileName?: StringFilter<"Document"> | string
-    fileUrl?: StringFilter<"Document"> | string
-    publicId?: StringFilter<"Document"> | string
-    uploadedAt?: DateTimeFilter<"Document"> | Date | string
-    visaAppId?: StringFilter<"Document"> | string
+    AND?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    OR?: UploadedDocumentWhereInput[]
+    NOT?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    fileName?: StringFilter<"UploadedDocument"> | string
+    field?: StringFilter<"UploadedDocument"> | string
+    originalName?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileUrl?: StringFilter<"UploadedDocument"> | string
+    publicId?: StringFilter<"UploadedDocument"> | string
+    uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    visaAppId?: StringFilter<"UploadedDocument"> | string
     visaApp?: XOR<VisaApplicationScalarRelationFilter, VisaApplicationWhereInput>
   }, "id">
 
-  export type DocumentOrderByWithAggregationInput = {
+  export type UploadedDocumentOrderByWithAggregationInput = {
     id?: SortOrder
     fileName?: SortOrder
+    field?: SortOrder
+    originalName?: SortOrder
+    fileSize?: SortOrder
+    fileType?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
     visaAppId?: SortOrder
-    _count?: DocumentCountOrderByAggregateInput
-    _max?: DocumentMaxOrderByAggregateInput
-    _min?: DocumentMinOrderByAggregateInput
+    _count?: UploadedDocumentCountOrderByAggregateInput
+    _avg?: UploadedDocumentAvgOrderByAggregateInput
+    _max?: UploadedDocumentMaxOrderByAggregateInput
+    _min?: UploadedDocumentMinOrderByAggregateInput
+    _sum?: UploadedDocumentSumOrderByAggregateInput
   }
 
-  export type DocumentScalarWhereWithAggregatesInput = {
-    AND?: DocumentScalarWhereWithAggregatesInput | DocumentScalarWhereWithAggregatesInput[]
-    OR?: DocumentScalarWhereWithAggregatesInput[]
-    NOT?: DocumentScalarWhereWithAggregatesInput | DocumentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Document"> | string
-    fileName?: StringWithAggregatesFilter<"Document"> | string
-    fileUrl?: StringWithAggregatesFilter<"Document"> | string
-    publicId?: StringWithAggregatesFilter<"Document"> | string
-    uploadedAt?: DateTimeWithAggregatesFilter<"Document"> | Date | string
-    visaAppId?: StringWithAggregatesFilter<"Document"> | string
+  export type UploadedDocumentScalarWhereWithAggregatesInput = {
+    AND?: UploadedDocumentScalarWhereWithAggregatesInput | UploadedDocumentScalarWhereWithAggregatesInput[]
+    OR?: UploadedDocumentScalarWhereWithAggregatesInput[]
+    NOT?: UploadedDocumentScalarWhereWithAggregatesInput | UploadedDocumentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    fileName?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    field?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    originalName?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    fileSize?: IntWithAggregatesFilter<"UploadedDocument"> | number
+    fileType?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    fileUrl?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    publicId?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    uploadedAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
+    visaAppId?: StringWithAggregatesFilter<"UploadedDocument"> | string
   }
 
   export type VisaPromoWhereInput = {
@@ -21810,7 +21923,7 @@ export namespace Prisma {
     travelDate: Date | string
     returnDate: Date | string
     createdAt?: Date | string
-    documents?: DocumentCreateNestedManyWithoutVisaAppInput
+    documents?: UploadedDocumentCreateNestedManyWithoutVisaAppInput
   }
 
   export type VisaApplicationUncheckedCreateInput = {
@@ -21823,7 +21936,7 @@ export namespace Prisma {
     travelDate: Date | string
     returnDate: Date | string
     createdAt?: Date | string
-    documents?: DocumentUncheckedCreateNestedManyWithoutVisaAppInput
+    documents?: UploadedDocumentUncheckedCreateNestedManyWithoutVisaAppInput
   }
 
   export type VisaApplicationUpdateInput = {
@@ -21836,7 +21949,7 @@ export namespace Prisma {
     travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
     returnDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    documents?: DocumentUpdateManyWithoutVisaAppNestedInput
+    documents?: UploadedDocumentUpdateManyWithoutVisaAppNestedInput
   }
 
   export type VisaApplicationUncheckedUpdateInput = {
@@ -21849,7 +21962,7 @@ export namespace Prisma {
     travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
     returnDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    documents?: DocumentUncheckedUpdateManyWithoutVisaAppNestedInput
+    documents?: UploadedDocumentUncheckedUpdateManyWithoutVisaAppNestedInput
   }
 
   export type VisaApplicationCreateManyInput = {
@@ -21888,62 +22001,90 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DocumentCreateInput = {
+  export type UploadedDocumentCreateInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
     visaApp: VisaApplicationCreateNestedOneWithoutDocumentsInput
   }
 
-  export type DocumentUncheckedCreateInput = {
+  export type UploadedDocumentUncheckedCreateInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
     visaAppId: string
   }
 
-  export type DocumentUpdateInput = {
+  export type UploadedDocumentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     visaApp?: VisaApplicationUpdateOneRequiredWithoutDocumentsNestedInput
   }
 
-  export type DocumentUncheckedUpdateInput = {
+  export type UploadedDocumentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     visaAppId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type DocumentCreateManyInput = {
+  export type UploadedDocumentCreateManyInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
     visaAppId: string
   }
 
-  export type DocumentUpdateManyMutationInput = {
+  export type UploadedDocumentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DocumentUncheckedUpdateManyInput = {
+  export type UploadedDocumentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22964,13 +23105,13 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type DocumentListRelationFilter = {
-    every?: DocumentWhereInput
-    some?: DocumentWhereInput
-    none?: DocumentWhereInput
+  export type UploadedDocumentListRelationFilter = {
+    every?: UploadedDocumentWhereInput
+    some?: UploadedDocumentWhereInput
+    none?: UploadedDocumentWhereInput
   }
 
-  export type DocumentOrderByRelationAggregateInput = {
+  export type UploadedDocumentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23015,31 +23156,51 @@ export namespace Prisma {
     isNot?: VisaApplicationWhereInput
   }
 
-  export type DocumentCountOrderByAggregateInput = {
+  export type UploadedDocumentCountOrderByAggregateInput = {
     id?: SortOrder
     fileName?: SortOrder
+    field?: SortOrder
+    originalName?: SortOrder
+    fileSize?: SortOrder
+    fileType?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
     visaAppId?: SortOrder
   }
 
-  export type DocumentMaxOrderByAggregateInput = {
+  export type UploadedDocumentAvgOrderByAggregateInput = {
+    fileSize?: SortOrder
+  }
+
+  export type UploadedDocumentMaxOrderByAggregateInput = {
     id?: SortOrder
     fileName?: SortOrder
+    field?: SortOrder
+    originalName?: SortOrder
+    fileSize?: SortOrder
+    fileType?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
     visaAppId?: SortOrder
   }
 
-  export type DocumentMinOrderByAggregateInput = {
+  export type UploadedDocumentMinOrderByAggregateInput = {
     id?: SortOrder
     fileName?: SortOrder
+    field?: SortOrder
+    originalName?: SortOrder
+    fileSize?: SortOrder
+    fileType?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
     visaAppId?: SortOrder
+  }
+
+  export type UploadedDocumentSumOrderByAggregateInput = {
+    fileSize?: SortOrder
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -23782,46 +23943,46 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPasswordResetTokensInput, UserUpdateWithoutPasswordResetTokensInput>, UserUncheckedUpdateWithoutPasswordResetTokensInput>
   }
 
-  export type DocumentCreateNestedManyWithoutVisaAppInput = {
-    create?: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput> | DocumentCreateWithoutVisaAppInput[] | DocumentUncheckedCreateWithoutVisaAppInput[]
-    connectOrCreate?: DocumentCreateOrConnectWithoutVisaAppInput | DocumentCreateOrConnectWithoutVisaAppInput[]
-    createMany?: DocumentCreateManyVisaAppInputEnvelope
-    connect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
+  export type UploadedDocumentCreateNestedManyWithoutVisaAppInput = {
+    create?: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput> | UploadedDocumentCreateWithoutVisaAppInput[] | UploadedDocumentUncheckedCreateWithoutVisaAppInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutVisaAppInput | UploadedDocumentCreateOrConnectWithoutVisaAppInput[]
+    createMany?: UploadedDocumentCreateManyVisaAppInputEnvelope
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
   }
 
-  export type DocumentUncheckedCreateNestedManyWithoutVisaAppInput = {
-    create?: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput> | DocumentCreateWithoutVisaAppInput[] | DocumentUncheckedCreateWithoutVisaAppInput[]
-    connectOrCreate?: DocumentCreateOrConnectWithoutVisaAppInput | DocumentCreateOrConnectWithoutVisaAppInput[]
-    createMany?: DocumentCreateManyVisaAppInputEnvelope
-    connect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
+  export type UploadedDocumentUncheckedCreateNestedManyWithoutVisaAppInput = {
+    create?: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput> | UploadedDocumentCreateWithoutVisaAppInput[] | UploadedDocumentUncheckedCreateWithoutVisaAppInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutVisaAppInput | UploadedDocumentCreateOrConnectWithoutVisaAppInput[]
+    createMany?: UploadedDocumentCreateManyVisaAppInputEnvelope
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
   }
 
-  export type DocumentUpdateManyWithoutVisaAppNestedInput = {
-    create?: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput> | DocumentCreateWithoutVisaAppInput[] | DocumentUncheckedCreateWithoutVisaAppInput[]
-    connectOrCreate?: DocumentCreateOrConnectWithoutVisaAppInput | DocumentCreateOrConnectWithoutVisaAppInput[]
-    upsert?: DocumentUpsertWithWhereUniqueWithoutVisaAppInput | DocumentUpsertWithWhereUniqueWithoutVisaAppInput[]
-    createMany?: DocumentCreateManyVisaAppInputEnvelope
-    set?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    disconnect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    delete?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    connect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    update?: DocumentUpdateWithWhereUniqueWithoutVisaAppInput | DocumentUpdateWithWhereUniqueWithoutVisaAppInput[]
-    updateMany?: DocumentUpdateManyWithWhereWithoutVisaAppInput | DocumentUpdateManyWithWhereWithoutVisaAppInput[]
-    deleteMany?: DocumentScalarWhereInput | DocumentScalarWhereInput[]
+  export type UploadedDocumentUpdateManyWithoutVisaAppNestedInput = {
+    create?: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput> | UploadedDocumentCreateWithoutVisaAppInput[] | UploadedDocumentUncheckedCreateWithoutVisaAppInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutVisaAppInput | UploadedDocumentCreateOrConnectWithoutVisaAppInput[]
+    upsert?: UploadedDocumentUpsertWithWhereUniqueWithoutVisaAppInput | UploadedDocumentUpsertWithWhereUniqueWithoutVisaAppInput[]
+    createMany?: UploadedDocumentCreateManyVisaAppInputEnvelope
+    set?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    disconnect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    delete?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    update?: UploadedDocumentUpdateWithWhereUniqueWithoutVisaAppInput | UploadedDocumentUpdateWithWhereUniqueWithoutVisaAppInput[]
+    updateMany?: UploadedDocumentUpdateManyWithWhereWithoutVisaAppInput | UploadedDocumentUpdateManyWithWhereWithoutVisaAppInput[]
+    deleteMany?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
   }
 
-  export type DocumentUncheckedUpdateManyWithoutVisaAppNestedInput = {
-    create?: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput> | DocumentCreateWithoutVisaAppInput[] | DocumentUncheckedCreateWithoutVisaAppInput[]
-    connectOrCreate?: DocumentCreateOrConnectWithoutVisaAppInput | DocumentCreateOrConnectWithoutVisaAppInput[]
-    upsert?: DocumentUpsertWithWhereUniqueWithoutVisaAppInput | DocumentUpsertWithWhereUniqueWithoutVisaAppInput[]
-    createMany?: DocumentCreateManyVisaAppInputEnvelope
-    set?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    disconnect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    delete?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    connect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
-    update?: DocumentUpdateWithWhereUniqueWithoutVisaAppInput | DocumentUpdateWithWhereUniqueWithoutVisaAppInput[]
-    updateMany?: DocumentUpdateManyWithWhereWithoutVisaAppInput | DocumentUpdateManyWithWhereWithoutVisaAppInput[]
-    deleteMany?: DocumentScalarWhereInput | DocumentScalarWhereInput[]
+  export type UploadedDocumentUncheckedUpdateManyWithoutVisaAppNestedInput = {
+    create?: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput> | UploadedDocumentCreateWithoutVisaAppInput[] | UploadedDocumentUncheckedCreateWithoutVisaAppInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutVisaAppInput | UploadedDocumentCreateOrConnectWithoutVisaAppInput[]
+    upsert?: UploadedDocumentUpsertWithWhereUniqueWithoutVisaAppInput | UploadedDocumentUpsertWithWhereUniqueWithoutVisaAppInput[]
+    createMany?: UploadedDocumentCreateManyVisaAppInputEnvelope
+    set?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    disconnect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    delete?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    update?: UploadedDocumentUpdateWithWhereUniqueWithoutVisaAppInput | UploadedDocumentUpdateWithWhereUniqueWithoutVisaAppInput[]
+    updateMany?: UploadedDocumentUpdateManyWithWhereWithoutVisaAppInput | UploadedDocumentUpdateManyWithWhereWithoutVisaAppInput[]
+    deleteMany?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
   }
 
   export type VisaApplicationCreateNestedOneWithoutDocumentsInput = {
@@ -25866,58 +26027,70 @@ export namespace Prisma {
     AdminLog?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type DocumentCreateWithoutVisaAppInput = {
+  export type UploadedDocumentCreateWithoutVisaAppInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
   }
 
-  export type DocumentUncheckedCreateWithoutVisaAppInput = {
+  export type UploadedDocumentUncheckedCreateWithoutVisaAppInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
   }
 
-  export type DocumentCreateOrConnectWithoutVisaAppInput = {
-    where: DocumentWhereUniqueInput
-    create: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput>
+  export type UploadedDocumentCreateOrConnectWithoutVisaAppInput = {
+    where: UploadedDocumentWhereUniqueInput
+    create: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput>
   }
 
-  export type DocumentCreateManyVisaAppInputEnvelope = {
-    data: DocumentCreateManyVisaAppInput | DocumentCreateManyVisaAppInput[]
+  export type UploadedDocumentCreateManyVisaAppInputEnvelope = {
+    data: UploadedDocumentCreateManyVisaAppInput | UploadedDocumentCreateManyVisaAppInput[]
     skipDuplicates?: boolean
   }
 
-  export type DocumentUpsertWithWhereUniqueWithoutVisaAppInput = {
-    where: DocumentWhereUniqueInput
-    update: XOR<DocumentUpdateWithoutVisaAppInput, DocumentUncheckedUpdateWithoutVisaAppInput>
-    create: XOR<DocumentCreateWithoutVisaAppInput, DocumentUncheckedCreateWithoutVisaAppInput>
+  export type UploadedDocumentUpsertWithWhereUniqueWithoutVisaAppInput = {
+    where: UploadedDocumentWhereUniqueInput
+    update: XOR<UploadedDocumentUpdateWithoutVisaAppInput, UploadedDocumentUncheckedUpdateWithoutVisaAppInput>
+    create: XOR<UploadedDocumentCreateWithoutVisaAppInput, UploadedDocumentUncheckedCreateWithoutVisaAppInput>
   }
 
-  export type DocumentUpdateWithWhereUniqueWithoutVisaAppInput = {
-    where: DocumentWhereUniqueInput
-    data: XOR<DocumentUpdateWithoutVisaAppInput, DocumentUncheckedUpdateWithoutVisaAppInput>
+  export type UploadedDocumentUpdateWithWhereUniqueWithoutVisaAppInput = {
+    where: UploadedDocumentWhereUniqueInput
+    data: XOR<UploadedDocumentUpdateWithoutVisaAppInput, UploadedDocumentUncheckedUpdateWithoutVisaAppInput>
   }
 
-  export type DocumentUpdateManyWithWhereWithoutVisaAppInput = {
-    where: DocumentScalarWhereInput
-    data: XOR<DocumentUpdateManyMutationInput, DocumentUncheckedUpdateManyWithoutVisaAppInput>
+  export type UploadedDocumentUpdateManyWithWhereWithoutVisaAppInput = {
+    where: UploadedDocumentScalarWhereInput
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyWithoutVisaAppInput>
   }
 
-  export type DocumentScalarWhereInput = {
-    AND?: DocumentScalarWhereInput | DocumentScalarWhereInput[]
-    OR?: DocumentScalarWhereInput[]
-    NOT?: DocumentScalarWhereInput | DocumentScalarWhereInput[]
-    id?: StringFilter<"Document"> | string
-    fileName?: StringFilter<"Document"> | string
-    fileUrl?: StringFilter<"Document"> | string
-    publicId?: StringFilter<"Document"> | string
-    uploadedAt?: DateTimeFilter<"Document"> | Date | string
-    visaAppId?: StringFilter<"Document"> | string
+  export type UploadedDocumentScalarWhereInput = {
+    AND?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+    OR?: UploadedDocumentScalarWhereInput[]
+    NOT?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+    id?: StringFilter<"UploadedDocument"> | string
+    fileName?: StringFilter<"UploadedDocument"> | string
+    field?: StringFilter<"UploadedDocument"> | string
+    originalName?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileUrl?: StringFilter<"UploadedDocument"> | string
+    publicId?: StringFilter<"UploadedDocument"> | string
+    uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    visaAppId?: StringFilter<"UploadedDocument"> | string
   }
 
   export type VisaApplicationCreateWithoutDocumentsInput = {
@@ -26395,33 +26568,49 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DocumentCreateManyVisaAppInput = {
+  export type UploadedDocumentCreateManyVisaAppInput = {
     id?: string
     fileName: string
+    field: string
+    originalName: string
+    fileSize: number
+    fileType: string
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
   }
 
-  export type DocumentUpdateWithoutVisaAppInput = {
+  export type UploadedDocumentUpdateWithoutVisaAppInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DocumentUncheckedUpdateWithoutVisaAppInput = {
+  export type UploadedDocumentUncheckedUpdateWithoutVisaAppInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DocumentUncheckedUpdateManyWithoutVisaAppInput = {
+  export type UploadedDocumentUncheckedUpdateManyWithoutVisaAppInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    originalName?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    fileType?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -23,7 +23,7 @@ export default function CheckoutForm() {
 
       const { url } = await res.json();
       if (url) window.location.href = url;
-    } catch (err) {
+    } catch {
       toast.error('Stripe checkout failed.');
     } finally {
       toast.dismiss();
@@ -47,7 +47,7 @@ export default function CheckoutForm() {
       } else {
         toast.error('M-Pesa payment failed.');
       }
-    } catch (err) {
+    } catch {
       toast.error('Something went wrong with M-Pesa.');
     } finally {
       toast.dismiss();
@@ -59,9 +59,9 @@ export default function CheckoutForm() {
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
 
       <div className="space-y-2">
-        <p><strong>Country:</strong> {tripDetails.country}</p>
-        <p><strong>Visa Type:</strong> {tripDetails.visaType}</p>
-        <p><strong>Applicant:</strong> {personalInfo.fullName}</p>
+        <p><strong>Country:</strong> {tripDetails?.destination}</p>
+        <p><strong>Visa Type:</strong> {tripDetails?.visaType}</p>
+        <p><strong>Applicant:</strong> {personalInfo?.firstName} {personalInfo?.lastName}</p>
         <p><strong>Fee:</strong> $120</p>
       </div>
 

@@ -8,6 +8,7 @@ import CheckoutForm from './steps/CheckoutForm';
 import Stepper from './Stepper';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useVisaFormStore } from '@/stores/VisaFormStore';
+import { useEffect } from 'react';
 
 const steps = ['Trip Details', 'Personal Info', 'Documents', 'Checkout'];
 
@@ -17,6 +18,16 @@ export default function ApplyFormShell() {
   const currentStep = useVisaFormStore((state) => state.currentStep);
   const goToStep = useVisaFormStore((state) => state.goToStep);
 
+  useEffect(() => {
+    const savedStep = Number(localStorage.getItem('visaApplyCurrentStep'));
+    if (!isNaN(savedStep) && savedStep > 0 && savedStep < steps.length) {
+      goToStep(savedStep);
+    }
+  }, [goToStep]);
+  useEffect(() => {
+    localStorage.setItem('visaApplyCurrentStep', currentStep.toString());
+  }, [currentStep]);
+ 
   const next = () => goToStep(Math.min(currentStep + 1, steps.length - 1));
   const back = () => goToStep(Math.max(currentStep - 1, 0));
 
@@ -27,7 +38,7 @@ export default function ApplyFormShell() {
       case 1:
         return <PersonalInfoForm onNext={next} onBack={back} key="step-1" />;
       case 2:
-        return <DocumentUploadForm onNext={next} onBack={back} key="step-2" />;
+        return <DocumentUploadForm onNext={next} onBack={back} key="step-2" id={methods.getValues('visaAppId') || ''} />;
       case 3:
         return <CheckoutForm onBack={back} key="step-3" />;
       default:
@@ -44,3 +55,4 @@ export default function ApplyFormShell() {
     </FormProvider>
   );
 }
+

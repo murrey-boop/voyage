@@ -15,6 +15,12 @@ export const personalInfoSchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
   email: z.string().email('Enter a valid email'),
   phone: z.string().min(7, 'Enter a valid phone number'),
+  address: z.string().min(5, 'Enter a valid address'),
+  dob: z.string().refine(
+    (val) => new Date(val) < new Date(),
+    { message: 'Date of birth must be in the past' }
+  ),
+  gender: z.string().min(1, 'Gender is required'),
   passportNumber: z.string().min(5, 'Enter a valid passport number'),
   passportExpiry: z.string().refine(
     (val) => new Date(val) > new Date(),

@@ -2,8 +2,27 @@
 import { create } from 'zustand';
 
 type VisaFormStore = {
+
   visaAppId: string | null;
   setVisaAppId: (id: string) => void;
+  tripDetails?: {
+    destination?: string;
+    visaType?: string;
+    startDate?: string;
+    endDate?: string;
+  };
+  personalInfo?: {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+  };
+  uploadedFiles?: Array<{
+    url?: string;
+    type?: string;
+    fileName: string;
+  }>;
+  // ...other properties
 
   currentStep: number;
   nextStep: () => void;

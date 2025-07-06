@@ -198,13 +198,25 @@ model VisaApplication {
   phone      String
   travelDate DateTime
   returnDate DateTime
-  documents  Document[] // <-- One-to-many relationship
+  documents  UploadedDocument[] // <-- One-to-many relationship
   createdAt  DateTime   @default(now())
 }
 
-model Document {
+model UploadedDocument {
   id         String          @id @default(cuid())
   fileName   String
+  field     String
+  originalName String
+  fileSize   Int
+  fileType   String
+  filePath   String
+  type        String          // e.g., 'passport', 'visa', 'flightItinerary', etc.
+  imagePreview Boolean?      @default(false)
+  multiple   Boolean?       @default(false)
+  imageUrl   String?
+  imageAlt   String?
+  imageWidth Int?
+  imageHeight Int?
   fileUrl    String
   publicId   String
   uploadedAt DateTime        @default(now())

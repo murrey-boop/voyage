@@ -190,7 +190,7 @@ model PasswordResetToken {
 }
 
 model VisaApplication {
-  id         String     @id @default(cuid())
+  id         String             @id @default(cuid())
   visaType   String
   country    String
   fullName   String
@@ -198,18 +198,22 @@ model VisaApplication {
   phone      String
   travelDate DateTime
   returnDate DateTime
-  documents  Document[] // <-- One-to-many relationship
-  createdAt  DateTime   @default(now())
+  documents  UploadedDocument[] // <-- One-to-many relationship
+  createdAt  DateTime           @default(now())
 }
 
-model Document {
-  id         String          @id @default(cuid())
-  fileName   String
-  fileUrl    String
-  publicId   String
-  uploadedAt DateTime        @default(now())
-  visaApp    VisaApplication @relation(fields: [visaAppId], references: [id])
-  visaAppId  String
+model UploadedDocument {
+  id           String          @id @default(cuid())
+  fileName     String
+  field        String
+  originalName String
+  fileSize     Int
+  fileType     String
+  fileUrl      String
+  publicId     String
+  uploadedAt   DateTime        @default(now())
+  visaApp      VisaApplication @relation(fields: [visaAppId], references: [id])
+  visaAppId    String
 
   @@index([visaAppId])
 }

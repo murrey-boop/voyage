@@ -21,6 +21,17 @@ const countries = [
   { label: 'Kenya', icon: '🇰🇪' },
   { label: 'Ghana', icon: '🇬🇭' },
   { label: 'South Africa', icon: '🇿🇦' },
+  { label: 'India', icon: '🇮🇳' },
+  { label: 'Pakistan', icon: '🇵🇰' },
+  { label: 'Bangladesh', icon: '🇧🇩' },
+  { label: 'Philippines', icon: '🇵🇭' },
+  { label: 'Indonesia', icon: '🇮🇩' },
+  { label: 'Malaysia', icon: '🇲🇾' },
+  { label: 'Singapore', icon: '🇸🇬' },
+  { label: 'Thailand', icon: '🇹🇭' },
+  { label: 'Vietnam', icon: '🇻🇳' },
+  { label: 'United Kingdom', icon: '🇬🇧' },
+  { label: 'United States', icon: '🇺🇸' },
 ];
 const visaTypes = [
   { label: 'Tourist', icon: '🎒' },
@@ -31,7 +42,7 @@ const visaTypes = [
 const todayISO = new Date().toISOString().split('T')[0];
 
 interface Props {
-  onNext: () => void;
+  onNext: () => void; 
   prefill?: Partial<TripDetailsFormType>; // Outfilled from hero search if any
   progress?: number; // 0-1 for circular indicator
 }
