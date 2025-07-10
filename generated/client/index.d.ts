@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 /**
  * Client
@@ -17238,10 +17237,14 @@ export namespace Prisma {
 
   export type UploadedDocumentAvgAggregateOutputType = {
     fileSize: number | null
+    imageWidth: number | null
+    imageHeight: number | null
   }
 
   export type UploadedDocumentSumAggregateOutputType = {
     fileSize: number | null
+    imageWidth: number | null
+    imageHeight: number | null
   }
 
   export type UploadedDocumentMinAggregateOutputType = {
@@ -17251,6 +17254,14 @@ export namespace Prisma {
     originalName: string | null
     fileSize: number | null
     fileType: string | null
+    filePath: string | null
+    type: string | null
+    imagePreview: boolean | null
+    multiple: boolean | null
+    imageUrl: string | null
+    imageAlt: string | null
+    imageWidth: number | null
+    imageHeight: number | null
     fileUrl: string | null
     publicId: string | null
     uploadedAt: Date | null
@@ -17264,6 +17275,14 @@ export namespace Prisma {
     originalName: string | null
     fileSize: number | null
     fileType: string | null
+    filePath: string | null
+    type: string | null
+    imagePreview: boolean | null
+    multiple: boolean | null
+    imageUrl: string | null
+    imageAlt: string | null
+    imageWidth: number | null
+    imageHeight: number | null
     fileUrl: string | null
     publicId: string | null
     uploadedAt: Date | null
@@ -17277,6 +17296,14 @@ export namespace Prisma {
     originalName: number
     fileSize: number
     fileType: number
+    filePath: number
+    type: number
+    imagePreview: number
+    multiple: number
+    imageUrl: number
+    imageAlt: number
+    imageWidth: number
+    imageHeight: number
     fileUrl: number
     publicId: number
     uploadedAt: number
@@ -17287,10 +17314,14 @@ export namespace Prisma {
 
   export type UploadedDocumentAvgAggregateInputType = {
     fileSize?: true
+    imageWidth?: true
+    imageHeight?: true
   }
 
   export type UploadedDocumentSumAggregateInputType = {
     fileSize?: true
+    imageWidth?: true
+    imageHeight?: true
   }
 
   export type UploadedDocumentMinAggregateInputType = {
@@ -17300,6 +17331,14 @@ export namespace Prisma {
     originalName?: true
     fileSize?: true
     fileType?: true
+    filePath?: true
+    type?: true
+    imagePreview?: true
+    multiple?: true
+    imageUrl?: true
+    imageAlt?: true
+    imageWidth?: true
+    imageHeight?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
@@ -17313,6 +17352,14 @@ export namespace Prisma {
     originalName?: true
     fileSize?: true
     fileType?: true
+    filePath?: true
+    type?: true
+    imagePreview?: true
+    multiple?: true
+    imageUrl?: true
+    imageAlt?: true
+    imageWidth?: true
+    imageHeight?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
@@ -17326,6 +17373,14 @@ export namespace Prisma {
     originalName?: true
     fileSize?: true
     fileType?: true
+    filePath?: true
+    type?: true
+    imagePreview?: true
+    multiple?: true
+    imageUrl?: true
+    imageAlt?: true
+    imageWidth?: true
+    imageHeight?: true
     fileUrl?: true
     publicId?: true
     uploadedAt?: true
@@ -17426,6 +17481,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview: boolean | null
+    multiple: boolean | null
+    imageUrl: string | null
+    imageAlt: string | null
+    imageWidth: number | null
+    imageHeight: number | null
     fileUrl: string
     publicId: string
     uploadedAt: Date
@@ -17458,6 +17521,14 @@ export namespace Prisma {
     originalName?: boolean
     fileSize?: boolean
     fileType?: boolean
+    filePath?: boolean
+    type?: boolean
+    imagePreview?: boolean
+    multiple?: boolean
+    imageUrl?: boolean
+    imageAlt?: boolean
+    imageWidth?: boolean
+    imageHeight?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
@@ -17472,6 +17543,14 @@ export namespace Prisma {
     originalName?: boolean
     fileSize?: boolean
     fileType?: boolean
+    filePath?: boolean
+    type?: boolean
+    imagePreview?: boolean
+    multiple?: boolean
+    imageUrl?: boolean
+    imageAlt?: boolean
+    imageWidth?: boolean
+    imageHeight?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
@@ -17486,6 +17565,14 @@ export namespace Prisma {
     originalName?: boolean
     fileSize?: boolean
     fileType?: boolean
+    filePath?: boolean
+    type?: boolean
+    imagePreview?: boolean
+    multiple?: boolean
+    imageUrl?: boolean
+    imageAlt?: boolean
+    imageWidth?: boolean
+    imageHeight?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
@@ -17500,13 +17587,21 @@ export namespace Prisma {
     originalName?: boolean
     fileSize?: boolean
     fileType?: boolean
+    filePath?: boolean
+    type?: boolean
+    imagePreview?: boolean
+    multiple?: boolean
+    imageUrl?: boolean
+    imageAlt?: boolean
+    imageWidth?: boolean
+    imageHeight?: boolean
     fileUrl?: boolean
     publicId?: boolean
     uploadedAt?: boolean
     visaAppId?: boolean
   }
 
-  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fileName" | "field" | "originalName" | "fileSize" | "fileType" | "fileUrl" | "publicId" | "uploadedAt" | "visaAppId", ExtArgs["result"]["uploadedDocument"]>
+  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fileName" | "field" | "originalName" | "fileSize" | "fileType" | "filePath" | "type" | "imagePreview" | "multiple" | "imageUrl" | "imageAlt" | "imageWidth" | "imageHeight" | "fileUrl" | "publicId" | "uploadedAt" | "visaAppId", ExtArgs["result"]["uploadedDocument"]>
   export type UploadedDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     visaApp?: boolean | VisaApplicationDefaultArgs<ExtArgs>
   }
@@ -17529,6 +17624,14 @@ export namespace Prisma {
       originalName: string
       fileSize: number
       fileType: string
+      filePath: string
+      type: string
+      imagePreview: boolean | null
+      multiple: boolean | null
+      imageUrl: string | null
+      imageAlt: string | null
+      imageWidth: number | null
+      imageHeight: number | null
       fileUrl: string
       publicId: string
       uploadedAt: Date
@@ -17963,6 +18066,14 @@ export namespace Prisma {
     readonly originalName: FieldRef<"UploadedDocument", 'String'>
     readonly fileSize: FieldRef<"UploadedDocument", 'Int'>
     readonly fileType: FieldRef<"UploadedDocument", 'String'>
+    readonly filePath: FieldRef<"UploadedDocument", 'String'>
+    readonly type: FieldRef<"UploadedDocument", 'String'>
+    readonly imagePreview: FieldRef<"UploadedDocument", 'Boolean'>
+    readonly multiple: FieldRef<"UploadedDocument", 'Boolean'>
+    readonly imageUrl: FieldRef<"UploadedDocument", 'String'>
+    readonly imageAlt: FieldRef<"UploadedDocument", 'String'>
+    readonly imageWidth: FieldRef<"UploadedDocument", 'Int'>
+    readonly imageHeight: FieldRef<"UploadedDocument", 'Int'>
     readonly fileUrl: FieldRef<"UploadedDocument", 'String'>
     readonly publicId: FieldRef<"UploadedDocument", 'String'>
     readonly uploadedAt: FieldRef<"UploadedDocument", 'DateTime'>
@@ -19701,6 +19812,14 @@ export namespace Prisma {
     originalName: 'originalName',
     fileSize: 'fileSize',
     fileType: 'fileType',
+    filePath: 'filePath',
+    type: 'type',
+    imagePreview: 'imagePreview',
+    multiple: 'multiple',
+    imageUrl: 'imageUrl',
+    imageAlt: 'imageAlt',
+    imageWidth: 'imageWidth',
+    imageHeight: 'imageHeight',
     fileUrl: 'fileUrl',
     publicId: 'publicId',
     uploadedAt: 'uploadedAt',
@@ -20829,6 +20948,14 @@ export namespace Prisma {
     originalName?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
     fileType?: StringFilter<"UploadedDocument"> | string
+    filePath?: StringFilter<"UploadedDocument"> | string
+    type?: StringFilter<"UploadedDocument"> | string
+    imagePreview?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    multiple?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    imageUrl?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageAlt?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageWidth?: IntNullableFilter<"UploadedDocument"> | number | null
+    imageHeight?: IntNullableFilter<"UploadedDocument"> | number | null
     fileUrl?: StringFilter<"UploadedDocument"> | string
     publicId?: StringFilter<"UploadedDocument"> | string
     uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
@@ -20843,6 +20970,14 @@ export namespace Prisma {
     originalName?: SortOrder
     fileSize?: SortOrder
     fileType?: SortOrder
+    filePath?: SortOrder
+    type?: SortOrder
+    imagePreview?: SortOrderInput | SortOrder
+    multiple?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    imageAlt?: SortOrderInput | SortOrder
+    imageWidth?: SortOrderInput | SortOrder
+    imageHeight?: SortOrderInput | SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -20860,6 +20995,14 @@ export namespace Prisma {
     originalName?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
     fileType?: StringFilter<"UploadedDocument"> | string
+    filePath?: StringFilter<"UploadedDocument"> | string
+    type?: StringFilter<"UploadedDocument"> | string
+    imagePreview?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    multiple?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    imageUrl?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageAlt?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageWidth?: IntNullableFilter<"UploadedDocument"> | number | null
+    imageHeight?: IntNullableFilter<"UploadedDocument"> | number | null
     fileUrl?: StringFilter<"UploadedDocument"> | string
     publicId?: StringFilter<"UploadedDocument"> | string
     uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
@@ -20874,6 +21017,14 @@ export namespace Prisma {
     originalName?: SortOrder
     fileSize?: SortOrder
     fileType?: SortOrder
+    filePath?: SortOrder
+    type?: SortOrder
+    imagePreview?: SortOrderInput | SortOrder
+    multiple?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    imageAlt?: SortOrderInput | SortOrder
+    imageWidth?: SortOrderInput | SortOrder
+    imageHeight?: SortOrderInput | SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -20895,6 +21046,14 @@ export namespace Prisma {
     originalName?: StringWithAggregatesFilter<"UploadedDocument"> | string
     fileSize?: IntWithAggregatesFilter<"UploadedDocument"> | number
     fileType?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    filePath?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    type?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    imagePreview?: BoolNullableWithAggregatesFilter<"UploadedDocument"> | boolean | null
+    multiple?: BoolNullableWithAggregatesFilter<"UploadedDocument"> | boolean | null
+    imageUrl?: StringNullableWithAggregatesFilter<"UploadedDocument"> | string | null
+    imageAlt?: StringNullableWithAggregatesFilter<"UploadedDocument"> | string | null
+    imageWidth?: IntNullableWithAggregatesFilter<"UploadedDocument"> | number | null
+    imageHeight?: IntNullableWithAggregatesFilter<"UploadedDocument"> | number | null
     fileUrl?: StringWithAggregatesFilter<"UploadedDocument"> | string
     publicId?: StringWithAggregatesFilter<"UploadedDocument"> | string
     uploadedAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
@@ -22008,6 +22167,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -22021,6 +22188,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -22034,6 +22209,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22047,6 +22230,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22060,6 +22251,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -22073,6 +22272,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22085,6 +22292,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23151,6 +23366,11 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type VisaApplicationScalarRelationFilter = {
     is?: VisaApplicationWhereInput
     isNot?: VisaApplicationWhereInput
@@ -23163,6 +23383,14 @@ export namespace Prisma {
     originalName?: SortOrder
     fileSize?: SortOrder
     fileType?: SortOrder
+    filePath?: SortOrder
+    type?: SortOrder
+    imagePreview?: SortOrder
+    multiple?: SortOrder
+    imageUrl?: SortOrder
+    imageAlt?: SortOrder
+    imageWidth?: SortOrder
+    imageHeight?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -23171,6 +23399,8 @@ export namespace Prisma {
 
   export type UploadedDocumentAvgOrderByAggregateInput = {
     fileSize?: SortOrder
+    imageWidth?: SortOrder
+    imageHeight?: SortOrder
   }
 
   export type UploadedDocumentMaxOrderByAggregateInput = {
@@ -23180,6 +23410,14 @@ export namespace Prisma {
     originalName?: SortOrder
     fileSize?: SortOrder
     fileType?: SortOrder
+    filePath?: SortOrder
+    type?: SortOrder
+    imagePreview?: SortOrder
+    multiple?: SortOrder
+    imageUrl?: SortOrder
+    imageAlt?: SortOrder
+    imageWidth?: SortOrder
+    imageHeight?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -23193,6 +23431,14 @@ export namespace Prisma {
     originalName?: SortOrder
     fileSize?: SortOrder
     fileType?: SortOrder
+    filePath?: SortOrder
+    type?: SortOrder
+    imagePreview?: SortOrder
+    multiple?: SortOrder
+    imageUrl?: SortOrder
+    imageAlt?: SortOrder
+    imageWidth?: SortOrder
+    imageHeight?: SortOrder
     fileUrl?: SortOrder
     publicId?: SortOrder
     uploadedAt?: SortOrder
@@ -23201,11 +23447,16 @@ export namespace Prisma {
 
   export type UploadedDocumentSumOrderByAggregateInput = {
     fileSize?: SortOrder
+    imageWidth?: SortOrder
+    imageHeight?: SortOrder
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type VisaPromoCountOrderByAggregateInput = {
@@ -23259,14 +23510,6 @@ export namespace Prisma {
 
   export type VisaPromoSumOrderByAggregateInput = {
     price?: SortOrder
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -23991,16 +24234,16 @@ export namespace Prisma {
     connect?: VisaApplicationWhereUniqueInput
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type VisaApplicationUpdateOneRequiredWithoutDocumentsNestedInput = {
     create?: XOR<VisaApplicationCreateWithoutDocumentsInput, VisaApplicationUncheckedCreateWithoutDocumentsInput>
     connectOrCreate?: VisaApplicationCreateOrConnectWithoutDocumentsInput
     upsert?: VisaApplicationUpsertWithoutDocumentsInput
     connect?: VisaApplicationWhereUniqueInput
     update?: XOR<XOR<VisaApplicationUpdateToOneWithWhereWithoutDocumentsInput, VisaApplicationUpdateWithoutDocumentsInput>, VisaApplicationUncheckedUpdateWithoutDocumentsInput>
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -26034,6 +26277,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -26046,6 +26297,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -26087,6 +26346,14 @@ export namespace Prisma {
     originalName?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
     fileType?: StringFilter<"UploadedDocument"> | string
+    filePath?: StringFilter<"UploadedDocument"> | string
+    type?: StringFilter<"UploadedDocument"> | string
+    imagePreview?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    multiple?: BoolNullableFilter<"UploadedDocument"> | boolean | null
+    imageUrl?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageAlt?: StringNullableFilter<"UploadedDocument"> | string | null
+    imageWidth?: IntNullableFilter<"UploadedDocument"> | number | null
+    imageHeight?: IntNullableFilter<"UploadedDocument"> | number | null
     fileUrl?: StringFilter<"UploadedDocument"> | string
     publicId?: StringFilter<"UploadedDocument"> | string
     uploadedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
@@ -26575,6 +26842,14 @@ export namespace Prisma {
     originalName: string
     fileSize: number
     fileType: string
+    filePath: string
+    type: string
+    imagePreview?: boolean | null
+    multiple?: boolean | null
+    imageUrl?: string | null
+    imageAlt?: string | null
+    imageWidth?: number | null
+    imageHeight?: number | null
     fileUrl: string
     publicId: string
     uploadedAt?: Date | string
@@ -26587,6 +26862,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26599,6 +26882,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26611,6 +26902,14 @@ export namespace Prisma {
     originalName?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
     fileType?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    imagePreview?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    multiple?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageAlt?: NullableStringFieldUpdateOperationsInput | string | null
+    imageWidth?: NullableIntFieldUpdateOperationsInput | number | null
+    imageHeight?: NullableIntFieldUpdateOperationsInput | number | null
     fileUrl?: StringFieldUpdateOperationsInput | string
     publicId?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string

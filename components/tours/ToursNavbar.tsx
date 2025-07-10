@@ -1,34 +1,30 @@
 'use client';
+
 import Link from 'next/link';
 import { Currency } from '@/constants';
 import { currencies } from '@/constants/currencies';
-import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import AuthModal from '@/components/auth/AuthModal';
-import ProfileDropdown from '../ProfileDropdown';
+import { useAuthModalStore } from '@/stores/AuthModalStore';
+//import ProfileDropdown from '../ProfileDropdown';
+import { useUser, SignOutButton } from '@clerk/nextjs';
 
 export default function ToursNavbar({
-  isLoggedIn,
-  firstName,
   currency,
   onCurrencyChange,
-  onLogout, // Pass this from parent or handle logout here
+  onLogout,
 }: {
-  isLoggedIn: boolean;
-  firstName: string;
   currency: Currency;
   onCurrencyChange: (newCurrency: Currency) => void;
   onLogout?: () => void;
 }) {
-  const router = useRouter();
-  const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const { openModal } = useAuthModalStore();
 
-  // Prevent body scroll when menu is open
+  const { user, isSignedIn } = useUser();
+
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add('overflow-hidden');
@@ -38,13 +34,19 @@ export default function ToursNavbar({
     return () => document.body.classList.remove('overflow-hidden');
   }, [menuOpen]);
 
-  // mobile nav items array for easy extension
   const mobileMenuItems = [
     { label: 'Home', href: '/' },
     { label: 'All Tours', href: '/tours' },
     { label: 'Plan Holiday', href: '/tours/plan-holiday' },
     { label: 'My Bookings', href: '/account/bookings', requiresLogin: true },
   ];
+
+  const firstName = user?.firstName || '';
+  // Use primary email's first character as fallback
+  const userInitial =
+    firstName.charAt(0).toUpperCase() ||
+    user?.emailAddresses?.[0]?.emailAddress.charAt(0).toUpperCase() ||
+    'U';
 
   return (
     <nav className="bg-white shadow-md py-4 sticky top-0 z-30">
@@ -80,32 +82,34 @@ export default function ToursNavbar({
           >
             Start Your Trip
           </Link>
-          {isLoggedIn ? (
-            <Link
-              href="/account"
-              className="w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-500 text-white rounded-full flex items-center justify-center font-montserrat"
-              aria-label="My Account"
-            >
-              {firstName.charAt(0).toUpperCase()}
-            </Link>
-          ) : (
+          {isSignedIn ? (
             <>
-              <button
-                onClick={() => setShowAuthModal(true)}
-                className="text-teal-600 hover:text-blue-600 font-lato"
-                aria-label="Login"
+              <Link
+                href="/account"
+                className="w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-500 text-white rounded-full flex items-center justify-center font-montserrat"
+                aria-label="My Account"
               >
-                {isLoggedIn ?(
-                  <ProfileDropdown />
-                ) : (
-                  'Login' 
-                )}
-                
-              </button>
-              {showAuthModal && (
-                <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
-              )}
+                {userInitial}
+              </Link>
+              <SignOutButton >
+                <button
+                  className="ml-2 text-teal-600 hover:text-blue-600 font-lato"
+                  aria-label="Logout"
+                  onClick={onLogout}
+                  type="button"
+                >
+                  Logout
+                </button>
+              </SignOutButton>
             </>
+          ) : (
+            <button
+              onClick={() => openModal('sign-in')}
+              className="text-teal-600 hover:text-blue-600 font-lato"
+              aria-label="Login"
+            >
+              Login
+            </button>
           )}
         </div>
         {/* Hamburger for Mobile */}
@@ -135,7 +139,7 @@ export default function ToursNavbar({
         <div className="flex flex-col h-full pt-20 px-6">
           {mobileMenuItems.map(
             (item) =>
-              (!item.requiresLogin || isLoggedIn) && (
+              (!item.requiresLogin || isSignedIn) && (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -163,7 +167,7 @@ export default function ToursNavbar({
             ))}
           </select>
           {/* Show Login or Account button */}
-          {isLoggedIn ? (
+          {isSignedIn ? (
             <>
               <Link
                 href="/account"
@@ -171,45 +175,39 @@ export default function ToursNavbar({
                 onClick={() => setMenuOpen(false)}
               >
                 <span className="w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center font-montserrat">
-                  {firstName.charAt(0).toUpperCase()}
+                  {userInitial}
                 </span>
                 My Account
               </Link>
-              {/* Logout Button at Bottom */}
-              <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  if (onLogout) onLogout(); // Call the logout handler
-                }}
-                className="not-only:mt-auto mb-18 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
-                aria-label="Logout"
-              >
-                <Image
-                  src="/icons/logoutIcon.svg"
-                  alt="Logout"
-                  className="w-5 h-5 border-red-500 border rounded-full p-1 bg-white/10 hover:bg-white/20 transition-transform duration-300"
-                  priority
-                  fill={true}
-                />
-                Logout
-              </button>
+              <SignOutButton>
+                <button
+                  className="not-only:mt-auto mb-18 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
+                  aria-label="Logout"
+                  onClick={onLogout}
+                  type="button"
+                >
+                  <Image
+                    src="/icons/logoutIcon.svg"
+                    alt="Logout"
+                    className="w-5 h-5 border-red-500 border rounded-full p-1 bg-white/10 hover:bg-white/20 transition-transform duration-300"
+                    priority
+                    fill={true}
+                  />
+                  Logout
+                </button>
+              </SignOutButton>
             </>
           ) : (
-            <>
-              <button
-                className="mt-4 bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg"
-                onClick={() => {
-                  setMenuOpen(false);
-                  setShowAuthModal(true);
-                }}
-                aria-label="Login"
-              >
-                Login
-              </button>
-              {showAuthModal && (
-                <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
-              )}
-            </>
+            <button
+              className="mt-4 bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg"
+              onClick={() => {
+                setMenuOpen(false);
+                openModal('sign-in');
+              }}
+              aria-label="Login"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
@@ -221,6 +219,8 @@ export default function ToursNavbar({
           aria-hidden="true"
         />
       )}
+      {/* Auth Modal */}
+      <AuthModal />
     </nav>
   );
-} 
+}

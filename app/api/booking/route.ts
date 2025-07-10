@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import  getServerSession  from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import bcrypt from "bcrypt";
 
@@ -28,14 +28,13 @@ export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     const data = await req.json();
-    // Expected data: { tourId, guests, startDate, endDate, note, destination, guestEmail, guestPhone }
+    // Expected data: { tourId, guests, startDate, endDate, note, guestEmail, guestPhone }
     const {
       tourId,
       guests,
       startDate,
       endDate,
       note,
-      destination,
       guestEmail,
       guestPhone,
       name: guestName,
@@ -43,7 +42,7 @@ export async function POST(req: NextRequest) {
 
     // Find or create user
     let userId: number;
-    if (session?.user?.email) {
+    if (session && session.user && session.user.email) {
       const user = await prisma.user.findUnique({ where: { email: session.user.email } });
       if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
       userId = user.id;

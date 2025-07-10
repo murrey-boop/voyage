@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com', //  Cloudinary
+        hostname: 'res.cloudinary.com', 
       },
       {
         protocol: 'https',
@@ -35,10 +35,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.pexels.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com', //  Cloudinary
-      },
+
     ],
     minimumCacheTTL: 3600, // Cache images for 1 hour
     formats: ['image/avif', 'image/webp'], 

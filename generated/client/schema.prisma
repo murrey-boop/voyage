@@ -209,6 +209,14 @@ model UploadedDocument {
   originalName String
   fileSize     Int
   fileType     String
+  filePath     String
+  type         String // e.g., 'passport', 'visa', 'flightItinerary', etc.
+  imagePreview Boolean?        @default(false)
+  multiple     Boolean?        @default(false)
+  imageUrl     String?
+  imageAlt     String?
+  imageWidth   Int?
+  imageHeight  Int?
   fileUrl      String
   publicId     String
   uploadedAt   DateTime        @default(now())
