@@ -16,6 +16,7 @@ import { useSession } from 'next-auth/react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [modalFocused, setModalFocused] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState('Kenya');
   const [hasMounted, setHasMounted] = useState(false);
@@ -128,8 +129,13 @@ export default function Navbar() {
   // Focus management for modal
   const handleModalFocus = () => setModalFocused(true);
   const handleModalBlur = () => {
-    setModalFocused(false);
+    if (showModal) {
+      (modalRefs.current[showModal]?.querySelector('[role="menuitem"]') as HTMLElement | null)?.blur();
+    }
+    // Reset modal state
     setShowModal(null);
+
+    setModalFocused(false);
   };
 
   // Keyboard navigation for nav items

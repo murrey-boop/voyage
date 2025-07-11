@@ -31,7 +31,7 @@ export default function FlightSearchForm({
           <label className="block text-sm font-medium text-gray-700 mb-1">From</label>
           <input
             name="origin"
-            defaultValue={initialValues.origin || ''}
+            defaultValue={typeof initialValues.origin === 'string' || typeof initialValues.origin === 'number' ? initialValues.origin : ''}
             className="w-full p-2 border rounded-md"
             placeholder="City or Airport"
           />
@@ -40,7 +40,7 @@ export default function FlightSearchForm({
           <label className="block text-sm font-medium text-gray-700 mb-1">To</label>
           <input
             name="destination"
-            defaultValue={initialValues.destination || ''}
+            defaultValue={typeof initialValues.destination === 'string' || typeof initialValues.destination === 'number' ? initialValues.destination : ''}
             className="w-full p-2 border rounded-md"
             placeholder="City or Airport"
           />
@@ -50,7 +50,17 @@ export default function FlightSearchForm({
           <input
             type="date"
             name="dates"
-            defaultValue={initialValues.dates || ''}
+            defaultValue={
+              Array.isArray(initialValues.dates)
+                ? initialValues.dates[0]
+                  ? (initialValues.dates[0] instanceof Date
+                      ? initialValues.dates[0].toISOString().slice(0, 10)
+                      : String(initialValues.dates[0]))
+                  : ''
+                : (typeof initialValues.dates === 'string'
+                    ? initialValues.dates
+                    : '')
+            }
             className="w-full p-2 border rounded-md"
           />
         </div>

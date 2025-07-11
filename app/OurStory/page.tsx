@@ -6,7 +6,7 @@ export default function OurStory() {
       <h1 className="text-4xl font-bold mb-6 text-blue-700 dark:text-blue-300">Our Story</h1>
       <div className="mb-8">
         <Image
-          src="/images/our-story-team.jpg"
+          src="/images/team.jpg"
           alt="Digital Voyage founders"
           width={900}
           height={400}

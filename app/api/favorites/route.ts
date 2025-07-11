@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { auth } from "@clerk/nextjs/server";
+
+// Helper to get Clerk user ID from request
+async function getClerkUserId() {
+  const user = await auth();
+  return user?.userId || null;
+}
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) {
+  const userId = await getClerkUserId();
+  if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -14,9 +19,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "type and itemId required" }, { status: 400 });
   }
 
-  const user = await prisma.user.findUnique({ where: { email: session.user.email } });
+  // Make sure the user exists in your database, or create them if needed
+  let user = await prisma.user.findUnique({ where: { clerkId: userId } });
   if (!user) {
-    return NextResponse.json({ error: "User not found" }, { status: 404 });
+    // Optionally, you can create the user here if not found
+    user = await prisma.user.create({ data: { clerkId: userId } });
   }
 
   // Create favorite if not exists
@@ -40,8 +47,8 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) {
+  const userId = await getClerkUserId();
+  if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -50,7 +57,7 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "type and itemId required" }, { status: 400 });
   }
 
-  const user = await prisma.user.findUnique({ where: { email: session.user.email } });
+  const user = await prisma.user.findUnique({ where: { clerkId: userId } });
   if (!user) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
@@ -62,12 +69,12 @@ export async function DELETE(req: NextRequest) {
   return NextResponse.json({ success: true });
 }
 
-export async function GET(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) {
+export async function GET() {
+  const userId = await getClerkUserId();
+  if (!userId) {
     return NextResponse.json({ favorites: [] });
   }
-  const user = await prisma.user.findUnique({ where: { email: session.user.email } });
+  const user = await prisma.user.findUnique({ where: { clerkId: userId } });
   if (!user) {
     return NextResponse.json({ favorites: [] });
   }

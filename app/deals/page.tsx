@@ -4,24 +4,22 @@ import { useSearchParams } from 'next/navigation';
 import  FlightSearchForm  from '@/components/flights/FlightSearchForm';
 import { SidebarFilters } from '@/components/flights/SidebarFilters';
 import { DealCard } from '@/components/DealCard';
-import { FlightFilters, FlightSearchParams, FlightDeal } from '@/types/flights';
+import { FlightFilters, FlightDeal } from '@/types/flights';
 import { fetchFlightDeals } from '@/lib/flightDeals';
 import { useWishlist } from '@/components/WishlistProvider';
 import { Deals } from '@/constants/Deals';
 
 
-export default function DealsPage({
-  searchParams,
-}: {
-  searchParams: FlightSearchParams;
-}
-) {
+export default function DealsPage() {
   const routerSearchParams = useSearchParams();
   const [deals, setDeals] = useState<FlightDeal[]>([]);
   const [filteredDeals, setFilteredDeals] = useState<FlightDeal[]>([]);
   const [loading, setLoading] = useState(true);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const { isInWishlist, toggleWishlist } = useWishlist();
+
+  
+
 
   // fetch deals on mount and when search params change
   useEffect(() => {
@@ -104,7 +102,15 @@ export default function DealsPage({
           <FlightSearchForm initialValues={{
             from: routerSearchParams.get('origin') || '',
             to: routerSearchParams.get('destination') || '',
-            dates: routerSearchParams.get('dates') || ''
+            dates: (() => {
+              const datesParam = routerSearchParams.get('dates');
+              if (!datesParam) return [null, null];
+              const [start, end] = datesParam.split(',');
+              return [
+                start ? new Date(start) : null,
+                end ? new Date(end) : null
+              ];
+            })()
           }} />
           
           {/* Results Count */}
@@ -153,3 +159,6 @@ export default function DealsPage({
     </div>
   );
 }
+
+
+

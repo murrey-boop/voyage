@@ -5,6 +5,8 @@ export interface Flight {
   price: number;
   airline: string;
   airlineLogo: string;
+  origin: string;
+  destination: string;
   duration: string;
   departureTime: string;
   arrivalTime: string;
@@ -26,7 +28,9 @@ export interface FlightSearchParams {
   returnDate: Date | null;
   travelers?: number;
   isStudent?: boolean;
-  dates:[Date | null, Date | null]; // [departureDate, returnDate]
+  dates: [Date | null, Date | null]; // [departureDate, returnDate]
+//  onSearch: (params: Omit<FlightSearchParams, 'onSearch'>) => void;
+  [key: string]: string | number | boolean | Date | [Date | null, Date | null] | ((params: Omit<FlightSearchParams, 'onSearch'>) => void) | null | undefined; // For additional search parameters
 }
 export interface FlightSearchFormProps {
   onSearch: (params: FlightSearchParams) => void;
@@ -69,4 +73,17 @@ export interface FlightFilters {
   image: string;
   isStudentDeal?: boolean;
   discountPercentage?: number;
+}
+
+export interface FlightDealsProps {
+  deals: FlightDeal[];
+  loading: boolean;
+  onFilterChange: (filters: FlightFilters) => void;
+  isStudentView?: boolean;
+}
+
+export interface FlightSearchFormProps {
+  initialValues?: Partial<FlightSearchParams>;
+  onSearch: (params: FlightSearchParams) => void;
+  isStudentView?: boolean;
 }

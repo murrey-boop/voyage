@@ -5,7 +5,7 @@ import FlightCards from '@/components/flights/FlightCards';
 import AboutUs from '@/components/flights/AboutUs';
 import Footer from '@/components/Footer';
 import NotificationBanner from '@/components/flights/NotificationBanner';
-import { Loader2, Plane, ChevronDown, Globe } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { Flight, FlightSearchParams } from '@/types/flights';
 import Head from 'next/head';
@@ -38,6 +38,7 @@ const CITY_IMAGES = {
   default: { src: '/images/city-default.jpg', width: 800, height: 600 }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const STUDENT_DESTINATIONS = [
   {
     city: 'Boston',
@@ -74,7 +75,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.DOH.src,
     width: CITY_IMAGES.DOH.width,
     height: CITY_IMAGES.DOH.height,
-    flightNumber: 'QR 542'
+    flightNumber: 'QR 542',
+    origin: 'DOH',
+    destination: 'LHR'
   },
   { 
     id: '2', 
@@ -93,7 +96,9 @@ const STATIC_FLIGHTS: Flight[] = [
     isStudentDeal: true,
     studentDiscount: 15,
     universityNearby: 'Columbia University, NYU',
-    flightNumber: 'DL 123'
+    flightNumber: 'DL 123',
+    origin: 'JFK',
+    destination: 'LHR'
   },
   { 
     id: '3', 
@@ -109,7 +114,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.DXB.src,
     width: CITY_IMAGES.DXB.width,
     height: CITY_IMAGES.DXB.height,
-    flightNumber: 'EK 722'
+    flightNumber: 'EK 722',
+    origin: 'DXB',
+    destination: 'LHR'
   },
     { 
     id: '4', 
@@ -125,7 +132,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.UA.src,
     width: CITY_IMAGES.UA.width,
     height: CITY_IMAGES.UA.height,
-    flightNumber: 'EK 722'
+    flightNumber: 'EK 722',
+    origin: 'FCO',
+    destination: 'LHR'
   },
     { 
     id: '5', 
@@ -141,7 +150,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.SQ.src,
     width: CITY_IMAGES.SQ.width,
     height: CITY_IMAGES.SQ.height,
-    flightNumber: 'EK 722'
+    flightNumber: 'EK 722',
+    origin: 'NRT',
+    destination: 'LHR'
   },
     { 
     id: '6', 
@@ -157,7 +168,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.KL.src,
     width: CITY_IMAGES.KL.width,
     height: CITY_IMAGES.KL.height,
-    flightNumber: 'EK 722'
+    flightNumber: 'EK 722',
+    origin: 'CPT',
+    destination: 'LHR'
   },
     { 
     id: '7', 
@@ -173,7 +186,9 @@ const STATIC_FLIGHTS: Flight[] = [
     image: CITY_IMAGES.MO.src,
     width: CITY_IMAGES.MO.width,
     height: CITY_IMAGES.MO.height,
-    flightNumber: 'EK 722'
+    flightNumber: 'EK 722',
+    origin: 'MBA',
+    destination: 'LHR'
   },
   { 
     id: '8', 
@@ -192,7 +207,9 @@ const STATIC_FLIGHTS: Flight[] = [
     isStudentDeal: true,
     studentDiscount: 10,
     universityNearby: 'Imperial College, UCL',
-    flightNumber: 'BA 114'
+    flightNumber: 'BA 114',
+    origin: 'LHR',
+    destination: 'JFK'
   }
 ];
 
@@ -202,45 +219,55 @@ export default function FlightsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [showStudentDeals, setShowStudentDeals] = useState(false);
-  const handleSearch = async (searchParams: FlightSearchParams) => {
+  const handleSearch = (searchParams: FlightSearchParams) => {
     setSearchPerformed(true);
     setIsLoading(true);
     setErrorMessage('');
     setShowStudentDeals(searchParams.isStudent || false);
 
     try {
-      if (!searchParams.to || !searchParams.from || !searchParams.departureDate || !searchParams.dates) {
+      // Ensure 'dates' is always present and valid
+      const dates: [Date | null, Date | null] = searchParams.dates;
+
+      if (
+        !searchParams.to ||
+        !searchParams.from ||
+        !searchParams.departureDate ||
+        !dates
+      ) {
         throw new Error('Please enter all required fields.');
       }
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      setTimeout(() => {
+        // In a real app, replace with actual API call
+        const demoFlights = STATIC_FLIGHTS.map(flight => ({
+          ...flight,
+          price: Math.round(flight.price * (0.8 + Math.random() * 0.4))
+        }));
 
-      // In a real app, replace with actual API call
-      const demoFlights = STATIC_FLIGHTS.map(flight => ({
-        ...flight,
-        price: Math.round(flight.price * (0.8 + Math.random() * 0.4))
-      }));
-
-      setFlights(demoFlights);
+        setFlights(demoFlights);
+        setIsLoading(false);
+      }, 1500);
     } catch (error) {
       console.error('Flight search error:', error);
       setErrorMessage(
         error instanceof Error ? error.message : 'Failed to search flights. Showing sample data instead.'
       );
       setFlights(STATIC_FLIGHTS);
-    } finally {
       setIsLoading(false);
     }
   };
 
-  const formatDuration = (duration: string) => {
+  {/**  const formatDuration = (duration: string) => {
     return duration.replace('PT', '').replace('H', 'h ').replace('M', 'm').trim();
   };
 
   const formatTime = (time: string) => {
     return new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
+  }; */}
+
+
   return (
     <>
       <Head>
@@ -248,7 +275,7 @@ export default function FlightsPage() {
         <meta name="description" content="Find and book affordable flights to top destinations." />
         <meta property="og:title" content="Search Flights | Digital Voyage" />
         <meta property="og:description" content="Explore and book flights with Digital Voyage." />
-        <meta property="og:image" content="/images/seo/flights.jpg" />
+        <meta property="og:image" content="/images/visa-hero.jpg" />
         <meta property="og:type" content="website" />
       </Head>
 

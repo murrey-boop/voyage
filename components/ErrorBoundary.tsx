@@ -20,9 +20,10 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback || <div className="text-red-500 text-center">Something went wrong loading this section.</div>;
+      return this.props.fallback || <div className="text-red-500 text-center">Something went wrong loading tours.</div>;
     }
 
     return this.props.children;
+      
   }
 }

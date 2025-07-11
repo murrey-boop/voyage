@@ -1,10 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare global {
+  interface Analytics {
+    [key: string]: any;
+    push?: (...args: any[]) => number;
+    methods?: string[];
+    factory?: (method: string) => (...args: unknown[]) => any;
+    load?: (key: string, options?: any) => void;
+    SNIPPET_VERSION?: string;
+    _loadOptions?: any;
+  }
   interface Window {
-    analytics: any;
+    analytics: Analytics;
   }
 }
 
-export function trackError(error: Error, context: string, metadata?: Record<string, any>) {
+export function trackError(error: Error, context: string, metadata?: Record<string, unknown>) {
   try {
     
     if (typeof window !== 'undefined' && window.analytics) {
@@ -74,10 +84,11 @@ export function initAnalytics() {
         'on'
       ];
       window.analytics.factory = function(method: string) {
-        return function() {
-          const args = Array.prototype.slice.call(arguments);
+        return function(...args: unknown[]) {
           args.unshift(method);
-          window.analytics.push(args);
+          if (typeof window.analytics.push === 'function') {
+            window.analytics.push(args);
+          }
           return window.analytics;
         };
       };

@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { auth } from "@clerk/nextjs/server";
 import bcrypt from "bcrypt";
-
-
-
 
 // Helper to create or find a guest user
 async function findOrCreateGuest(email: string, phoneNumber?: string, name = "Guest") {
@@ -26,7 +22,7 @@ async function findOrCreateGuest(email: string, phoneNumber?: string, name = "Gu
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const { userId: clerkUserId } = await auth();
     const data = await req.json();
     // Expected data: { tourId, guests, startDate, endDate, note, guestEmail, guestPhone }
     const {
@@ -42,10 +38,21 @@ export async function POST(req: NextRequest) {
 
     // Find or create user
     let userId: number;
-    if (session && session.user && session.user.email) {
-      const user = await prisma.user.findUnique({ where: { email: session.user.email } });
-      if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
-      userId = user.id;
+    if (clerkUserId) {
+      // If using Clerk, find user by Clerk ID
+      let dbUser = await prisma.user.findUnique({ where: { clerkId: clerkUserId } });
+      if (!dbUser) {
+        // Optionally create the DB user if not found (with minimal info)
+        dbUser = await prisma.user.create({
+          data: {
+            clerkId: clerkUserId,
+            email: undefined, // Clerk user email not available here
+            name: "Clerk User",
+            password: await bcrypt.hash(Date.now().toString(), 10), // random password, not usable
+          },
+        });
+      }
+      userId = dbUser.id;
     } else if (guestEmail) {
       const guest = await findOrCreateGuest(guestEmail, guestPhone, guestName || "Guest");
       userId = guest.id;
@@ -62,7 +69,6 @@ export async function POST(req: NextRequest) {
         startDate: new Date(startDate),
         endDate: new Date(endDate),
         note,
-        // date: new Date(), // You can add the current date if needed
       },
     });
 

@@ -17,7 +17,19 @@ export async function GET(request: Request) {
       max: 2, // Limit to 2 results
     });
 
-    const flights: FlightDeal[] = response.data.map((offer: any, index: number) => ({
+    interface AmadeusFlightOffer {
+      itineraries: {
+        duration: string;
+        segments: {
+          departure: { iataCode: string; at: string };
+          destination: { iataCode: string };
+          carrierCode: string;
+        }[];
+      }[];
+      price: { total: string };
+    }
+
+    const flights: FlightDeal[] = response.data.map((offer: AmadeusFlightOffer, index: number) => ({
       id: `f${index + 1}`,
       title: `Flight to ${offer.itineraries[0].segments[0].destination.iataCode}`,
       description: `Flight from ${origin} to ${offer.itineraries[0].segments[0].destination.iataCode}`,

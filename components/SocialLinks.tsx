@@ -1,13 +1,13 @@
 'use client';
 import { gsap } from 'gsap';
-//import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const socials = [
   { name: 'WhatsApp', id:'whatsapp',icon: '/icons/whatsapp.svg', url: 'https://wa.me/254743524370'  },
   { name: 'Facebook', icon: '/icons/facebook.svg', url: 'https://facebook.com/digitalvoyage' },
   { name: 'Instagram', icon: '/icons/instagram.svg', url: 'https://instagram.com/digitalvoyage' },
-  { name: 'Twitter', icon: '/icons/twitter.svg', url: 'https://twitter.com/digitalvoyage' }
+  { name: 'X', icon: '/icons/twitter.svg', url: 'https://twitter.com/digitalvoyage' }
 ];
 
 export default function SocialIcons() {
@@ -35,7 +35,7 @@ export default function SocialIcons() {
           className="p-2 bg-white rounded-full shadow hover:bg-teal-50 transition-colors"
           aria-label={social.name}
         >
-          <img
+          <Image
             src={social.icon} 
             alt={social.name} 
             className="w-5 h-5" 

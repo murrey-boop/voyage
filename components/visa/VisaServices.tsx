@@ -31,7 +31,7 @@ export default function VisaServices() {
   }, []);
 
   // Border size for both horizontal and vertical (e.g., 7px thick, 48px long)
-  const borderLength = 'h-12 w-[7px]'; // 48px height, 7px width
+  //const borderLength = 'h-12 w-[7px]'; // 48px height, 7px width
 
   return (
     <section

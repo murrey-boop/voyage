@@ -1,14 +1,11 @@
-// app/api/tours/route.ts
-import { supabase } from '@/lib/neon'
+import { neon } from '@/lib/neon'
 
 export async function GET() {
-  const { data, error } = await supabase
-    .from('tours')
-    .select('*')
-
-  if (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 })
+  try {
+    const result = await neon('SELECT * FROM tours')
+    return Response.json(result)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return new Response(JSON.stringify({ error: errorMessage }), { status: 500 })
   }
-
-  return Response.json(data)
 }

@@ -230,14 +230,14 @@ export default function FlightNavbar() {
               ))}
             </div>
           </div>
-                        <a
+          <a
             href={SOCIAL_LINKS.whatsapp.url}
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
             aria-label={SOCIAL_LINKS.whatsapp.label}
           >
-            <img
+            <Image
               src={SOCIAL_LINKS.whatsapp.icon}
               alt="WhatsApp"
               width={SOCIAL_LINKS.whatsapp.width}

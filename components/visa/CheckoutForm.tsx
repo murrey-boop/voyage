@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default function CheckoutForm() {
   const router = useRouter();
-  const { tripDetails, personalInfo, uploadedFiles } = useVisaFormStore();
+  const { tripDetails, personalInfo } = useVisaFormStore();
 
   const handleStripeCheckout = async () => {
     try {

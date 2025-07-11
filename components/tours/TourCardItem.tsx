@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { FlightDeal } from '@/types/flights';
 import { VisaPromo } from '@/types/visa';
 import {
-  getGuestFavorites,
+  //getGuestFavorites,
   isGuestFavorite,
   addGuestFavorite,
   removeGuestFavorite,
@@ -38,8 +38,8 @@ const TourCardItem: React.FC<Props> = ({ type, data }) => {
       // For simplicity, fetch all favorites on page (could optimize)
       fetch("/api/favorites")
         .then(res => res.json())
-        .then(({ favorites }) => {
-          setIsFavorite(favorites?.some((f: any) => f.type === type && f.itemId === id));
+        .then(({ favorites }: { favorites: { type: string; itemId: string }[] }) => {
+          setIsFavorite(favorites?.some((f) => f.type === type && f.itemId === id));
         });
     } else {
       setIsFavorite(isGuestFavorite(type, id));

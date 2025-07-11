@@ -1,8 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import Image from 'next/image';
+
 import { FaRegHandshake, FaUserTie, FaRegCreditCard, FaGlobeAfrica } from 'react-icons/fa';
 
 const SERVICES = [
@@ -29,28 +27,8 @@ const SERVICES = [
 ];
 
 export default function TourServices() {
-// const imageRef = useRef<HTMLDivElement>(null);
 
-// useEffect(() => {
-//   if (imageRef.current) {
-//     gsap.to(imageRef.current, {
-//       y: -20,
-//       rotationX: 15,
-//       rotationY: 15,
-//       duration: 2.2,
-//       repeat: -1,
-//       yoyo: true,
-//       ease: 'sine.inOut',
-//     });
-//     gsap.to(imageRef.current, {
-//       boxShadow: '0 20px 30px rgba(0, 0, 0, 0.5)',
-//       duration: 2.2,
-//       repeat: -1,
-//       yoyo: true,
-//       ease: 'sine.inOut',
-//     });
-//   }
-// }, []);
+
   return (
     <section className="bg-gray-900 py-16 text-white">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">

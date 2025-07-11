@@ -17,8 +17,18 @@ export type Tour={
   highlights: string[];
   includes: string[];
   reviewsCount: number;
+  currency?:string; // Optional, if you want to store currency
+  guide?: string; // Optional, if you want to store guide information
   icon?:'MapPin' | 'Mountain';
   groupSize?:string;
   isFavorite?: boolean;
+  description?: string;
+  durationDays?: number; 
+  availability?: {
+    [date: string]: {
+      available: boolean;
+      price: number;
+    };
+  };
 }
 

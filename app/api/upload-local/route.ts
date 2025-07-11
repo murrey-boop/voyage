@@ -58,6 +58,8 @@ export async function POST(req: NextRequest) {
           uploadedAt: new Date(),
           fileSize: buffer.length,
           publicId: `${id}_${field}_${timestamp}`,
+          filePath: uploadPath,
+          type: file.type,
           visaApp: {
             connect: { id }
           }

@@ -12,6 +12,8 @@ type FlightSearchParams = {
   departureDate: Date | null;
   returnDate: Date | null;
   travelers: number;
+  dates: [Date | null, Date | null]; // [departureDate, returnDate]
+  [key: string]: string | number | boolean | Date | [Date | null, Date | null] | null | undefined; // For additional search parameters
 };
 
 export default function FlightHero({ onSearch }: { onSearch: (params: FlightSearchParams) => void }) {
@@ -60,7 +62,14 @@ export default function FlightHero({ onSearch }: { onSearch: (params: FlightSear
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch({ from, to, departureDate, returnDate, travelers });
+    onSearch({ 
+      from, 
+      to, 
+      departureDate, 
+      returnDate, 
+      travelers, 
+      dates: [departureDate, returnDate] 
+    });
     
     // Button click animation
     gsap.to(searchButtonRef.current, {
@@ -70,7 +79,6 @@ export default function FlightHero({ onSearch }: { onSearch: (params: FlightSear
       repeat: 1
     });
   };
-
   return (
     <div 
       ref={heroRef}

@@ -12,19 +12,22 @@ import {
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 
+
+
+
+interface AvailabilityRange {
+  startDate: string | Date;
+  endDate: string | Date;
+  maxPeople: number;
+  bookedSlots: number;
+}
+
 interface BookingCalendarProps {
-  tourId: string;
-  availability: {
-    startDate: Date;
-    endDate: Date;
-    maxPeople: number;
-    bookedSlots: number;
-  }[];
+  availability: AvailabilityRange[];
   onDateSelect: (date: Date) => void;
 }
 
 export function BookingCalendar({
-  tourId,
   availability,
   onDateSelect,
 }: BookingCalendarProps) {

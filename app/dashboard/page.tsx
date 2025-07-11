@@ -37,7 +37,7 @@ const TABS = ["Favorites", "Bookings"] as const;
 type TabType = typeof TABS[number];
 
 const DashboardPage: React.FC = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -71,7 +71,7 @@ const DashboardPage: React.FC = () => {
         .then(async ({ favorites }) => {
           // Optionally expand extra details with batch fetches
           setFavorites(
-            favorites.map((f: any) => ({
+            favorites.map((f: FavoriteItem) => ({
               id: f.id,
               type: f.type,
               itemId: f.itemId,

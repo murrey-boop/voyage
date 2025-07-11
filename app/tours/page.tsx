@@ -1,17 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
-
-// Extend the User type to include currency
-declare module 'next-auth' {
-  interface User {
-    currency?: {
-      code: string;
-      symbol: string;
-      rate: number;
-    };
-  }
-}
 import ToursNavbar from '@/components/tours/ToursNavbar';
 import ToursHero from '@/components/tours/ToursHero';
 import DestinationCards from '@/components/tours/DestinationCards';
@@ -23,16 +11,18 @@ import { tours } from '@/constants/tours';
 import { defaultCurrency } from '@/constants/currencies';
 import Head from 'next/head';
 
-export default function ToursPage() {
-  const { data: session, status } = useSession();
+// If using Clerk, you can import useUser
+// import { useUser } from '@clerk/nextjs';
 
-  // Extract user information
-  const user = session?.user;
-  const name = user?.name || 'Guest';
-  const isLoggedIn = !!user;
-  const firstName = name.split(' ')[0];
-  // You can store user's currency in your user object; fallback to defaultCurrency
-  const userCurrency = user?.currency || defaultCurrency;
+export default function ToursPage() {
+  // If using Clerk:
+  // const { user, isSignedIn } = useUser();
+  // const name = user?.firstName ?? 'Guest';
+  // const userCurrency = user?.publicMetadata?.currency || defaultCurrency;
+
+  // If not using Clerk, fallback to defaultCurrency and Guest
+  //const name = 'Guest';
+  const userCurrency = defaultCurrency;
 
   // State for currency (initialize with userCurrency)
   const [currency, setCurrency] = useState(userCurrency);
@@ -65,8 +55,6 @@ export default function ToursPage() {
         <meta property="og:type" content="website" />
       </Head>
       <ToursNavbar
-        isLoggedIn={isLoggedIn}
-        firstName={firstName}
         currency={currency}
         onCurrencyChange={handleCurrencyChange}
       />
