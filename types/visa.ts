@@ -8,3 +8,16 @@ export interface VisaPromo {
   description?: string; // Optional field for additional details
   validity?:number;
 }
+
+export interface VisaFormState {
+  fullName: string;
+  email: string;
+  phone: string;
+  nationality: string;
+  passportNumber: string;
+  travelPurpose: string;
+  travelDates: {
+    start: string;
+    end: string;
+  };
+}

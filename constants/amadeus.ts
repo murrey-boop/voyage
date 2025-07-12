@@ -1,7 +1,7 @@
 const AMADEUS_CONFIG = {
   clientId: process.env.AMADEUS_CLIENT_ID,
   clientSecret: process.env.AMADEUS_CLIENT_SECRET,
-  hostname: process.env.AMADEUS_ENV === 'production' ? 'production' : 'test',
+  hostname: process.env.AMADEUS_ENV === 'development' ? 'production' : 'test',
 };
 
 if (!AMADEUS_CONFIG.clientId || !AMADEUS_CONFIG.clientSecret) {

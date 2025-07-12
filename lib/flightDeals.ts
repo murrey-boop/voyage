@@ -14,8 +14,7 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache duration
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 1000; // 1 second initial delay
 
-
-    interface Segment {
+interface Segment {
       departure?: { iataCode?: string; at?: string };
       arrival?: { iataCode?: string; at?: string };
       carrierCode?: string;

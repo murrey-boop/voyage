@@ -88,7 +88,7 @@ export default function PopularTours({ tours, currency }: { tours: Tour[]; curre
           {displayedTours.map((tour, index) => (
             <article
               key={tour.id}
-              ref={el => (cardRefs.current[index] = el)}
+              ref={el => { cardRefs.current[index] = el as HTMLDivElement | null; }}
               className="p-4 bg-white shadow-md rounded-xl border border-gray-200 transition duration-300 overflow-hidden flex flex-col"
               style={{ minHeight: 330 }}
             >

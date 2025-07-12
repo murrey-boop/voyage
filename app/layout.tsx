@@ -3,7 +3,6 @@ import './globals.css';
 import FloatingSocials from '@/components/Floatingsocials';
 import { WishlistProvider } from '@/components/WishlistProvider';
 import TawkToWidget from '@/components/TawkToWidget';
-import WhatsappChat from '@/components/WhatsappChat';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from '@/components/ui/sonner';
 import { SessionProvider } from 'next-auth/react';

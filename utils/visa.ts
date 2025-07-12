@@ -1,7 +1,7 @@
-import {db} from '@/lib/db'; // Adjust the import path as needed
+import  { prisma } from '@/lib/prisma';
 
 export async function updateVisaPaymentStatus(tx_ref: string) {
-  await db.visaApplication.updateMany({
+  await prisma.visaApplication.updateMany({
     where: {
       paymentRef: tx_ref,
     },
