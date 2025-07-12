@@ -179,23 +179,26 @@ export default function ToursNavbar({
                 </span>
                 My Account
               </Link>
-              <SignOutButton>
-                <button
-                  className="not-only:mt-auto mb-18 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
-                  aria-label="Logout"
-                  onClick={onLogout}
-                  type="button"
-                >
-                  <Image
-                    src="/icons/logoutIcon.svg"
-                    alt="Logout"
-                    className="w-5 h-5 border-red-500 border rounded-full p-1 bg-white/10 hover:bg-white/20 transition-transform duration-300"
-                    priority
-                    fill={true}
-                  />
-                  Logout
-                </button>
-              </SignOutButton>
+               <SignOutButton>
+                 <button
+                   className="not-only:mt-auto mb-18 flex items-center gap-2 bg-white/20 hover:bg-white/40 text-white font-semibold py-2 px-4 rounded-lg transition"
+                   aria-label="Logout"
+                   onClick={onLogout}
+                   type="button"
+                 >
+                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 transition">
+                     <Image
+                       src="/icons/logoutIcon.svg"
+                       alt="Logout"
+                       className="w-5 h-5"
+                       priority
+                       width={20}
+                       height={20}
+                     />
+                   </span>
+                   Logout
+                 </button>
+               </SignOutButton>               
             </>
           ) : (
             <button

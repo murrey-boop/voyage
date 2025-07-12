@@ -54,12 +54,12 @@ export default function TourServices() {
                 </div>
               </div>
             ))}
-          </div>
+          </div >
           <Link
             href="/tours/plan-holiday"
-            className="inline-flex bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 items-center space-x-2 shadow-lg hover:from-cyan-500 hover:to-blue-800"
+            className="inline-flex md:flex md:justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 items-center space-x-2 shadow-lg hover:from-cyan-500 hover:to-blue-800"
           >
-            <span>Plan Your Holiday</span>
+            <span >Plan Your Holiday</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -69,7 +69,7 @@ export default function TourServices() {
   <div
     className="relative w-100 h-70 bg-teal-500/10 rounded-lg overflow-hidden shadow-xl"
     style={{ perspective: '1000px' }}
-    aria-label="Maasai community video"
+    aria-label="Ocean view video"
   >
     <video
       src="/videos/random-video.mp4" 

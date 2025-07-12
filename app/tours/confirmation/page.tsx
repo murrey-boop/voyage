@@ -9,7 +9,7 @@ export default function ConfirmationPage() {
 
   return (
     <div className="font-montserrat">
-      <ToursNavbar isLoggedIn={false} firstName="" currency={{ code: 'KES', symbol: 'KSh', rate: 1 }} onCurrencyChange={() => {}} />
+      <ToursNavbar currency={{ code: 'KES', symbol: 'KSh', rate: 1 }} onCurrencyChange={() => {}} />
       <div className="container mx-auto px-8 sm:px-16 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 font-montserrat">
           Booking Confirmed!

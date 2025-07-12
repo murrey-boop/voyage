@@ -1,8 +1,14 @@
-import { Destination } from './';
+
+
+export interface Destination {
+  name: string;
+  image: string;
+  overlayImage: string;
+}
 
 export const destinations: Destination[] = [
   { name: 'Maasai Mara', image: '/images/maasai-mara.jpg', overlayImage: '/images/people-enjoying-1.jpg' },
-  { name: 'Paris', image: '/images/paris.jpg', overlayImage: '/images/people-enjoying-2.jpg' },
+  { name: 'Paris', image: '/images/paris.jpg', overlayImage: '/images/people-enjoying-8.jpg' },
   { name: 'Zanzibar', image: '/images/zanzibar.jpg', overlayImage: '/images/people-enjoying-3.jpg' },
   { name: 'Alps', image: '/images/alps.jpg', overlayImage: '/images/people-enjoying-4.jpg' },
   { name: 'Santorini', image: '/images/santorini.jpg', overlayImage: '/images/people-enjoying-5.jpg' },

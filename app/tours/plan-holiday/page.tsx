@@ -40,7 +40,7 @@ export default function PlanHolidayPage() {
 
   return (
     <div className="font-montserrat min-h-screen flex flex-col">
-      <ToursNavbar isLoggedIn={false} firstName="" currency={currency} onCurrencyChange={handleCurrencyChange} />
+      <ToursNavbar currency={currency} onCurrencyChange={handleCurrencyChange} />
       <div
         className="flex-grow flex items-center justify-center py-16 bg-cover bg-center"
         style={{ backgroundImage: 'url(/images/travel-bg.jpg)' }}
