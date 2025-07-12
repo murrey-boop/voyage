@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const socials = [
-  { name: 'WhatsApp', id:'whatsapp',icon: '/icons/whatsapp.svg', url: 'https://wa.me/254743524370'  },
-  { name: 'Facebook', icon: '/icons/facebook.svg', url: 'https://facebook.com/digitalvoyage' },
-  { name: 'Instagram', icon: '/icons/instagram.svg', url: 'https://instagram.com/digitalvoyage' },
-  { name: 'X', icon: '/icons/twitter.svg', url: 'https://twitter.com/digitalvoyage' }
+  { name: 'WhatsApp', icon: '/icons/whatsapp.svg', url: 'https://wa.me/254743524370', bg: 'bg-green-500' },
+  { name: 'Facebook', icon: '/icons/facebook.svg', url: 'https://web.facebook.com/profile.php?id=100089526312677', bg: 'bg-blue-600' },
+  { name: 'Instagram', icon: '/icons/instagram.svg', url: 'https://www.instagram.com/digital_voyaging/#', bg: 'bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500' },
+  { name: 'X', icon: '/icons/twitter.svg', url: 'https://twitter.com/digitalvoyaging', bg: 'bg-neutral-900' }
 ];
 
 export default function SocialIcons() {
@@ -16,29 +16,36 @@ export default function SocialIcons() {
   useEffect(() => {
     gsap.from(iconsRef.current?.children || [], {
       opacity: 0,
-      y: 20,
+      x: 40,
       stagger: 0.1,
-      duration: 0.5,
+      duration: 0.4,
       ease: "back.out",
       delay: 0.5
     });
   }, []);
 
   return (
-    <div ref={iconsRef} className="flex space-x-4">
+    <div
+      ref={iconsRef}
+      className="fixed top-1/2 right-6 -translate-y-1/2 flex flex-col gap-3 z-50"
+      style={{}}
+    >
       {socials.map((social) => (
-        <a 
+        <a
           key={social.name}
-          href={social.url} 
+          href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 bg-white rounded-full shadow hover:bg-teal-50 transition-colors"
+          className={`group p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-200 ${social.bg}`}
           aria-label={social.name}
+          title={social.name}
         >
           <Image
-            src={social.icon} 
-            alt={social.name} 
-            className="w-5 h-5" 
+            src={social.icon}
+            alt={social.name}
+            width={22}
+            height={22}
+            className="w-6 h-6"
           />
         </a>
       ))}

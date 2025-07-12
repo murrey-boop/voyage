@@ -56,7 +56,7 @@ export const metadata = {
                 <WishlistProvider>
                   <TawkToWidget />
                   <FloatingSocials />
-                  <WhatsappChat />
+                  
                   <Toaster position='top-right' richColors />
                     {children}
                 </WishlistProvider>

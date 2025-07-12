@@ -6,6 +6,7 @@ import { tours } from '@/data/tours';
 import { flights } from '@/data/flights';
 import { visas } from '@/data/visa';
 import TourSection from './tours/TourSection';
+import { FlightDeal } from '@/types/flights';
 
 export default function TourCard() {
   return (
@@ -25,8 +26,22 @@ export default function TourCard() {
         <Suspense fallback={<p>Loading flights...</p>}>
           <TourSection
             type="flights"
-            sectionTitle="Flight Deals"
-            items={flights}
+            sectionTitle="Top Flights"
+            items={flights.map((flight): FlightDeal => ({
+              id: String(flight.id),
+              title: flight.title,
+              description: flight.description,
+              price: flight.price,
+              origin: flight.route.split(' - ')[0] || flight.route,
+              destination: flight.route.split(' - ')[1] || flight.route,
+              date: new Date().toISOString().split('T')[0], // Default to today's date
+              duration: flight.hours ? `${flight.hours}h` : 'N/A',
+              stops: flight.stops || 0,
+              airline: 'TBD', // You'll need to add airline data to your flights
+              image: flight.image,
+              isStudentDeal: false, // Default value
+              discountPercentage: undefined
+            }))}
             seeMoreLink="/flights"
           />
         </Suspense>

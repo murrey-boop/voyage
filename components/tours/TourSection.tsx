@@ -4,35 +4,20 @@ import TourCardItem from './TourCardItem';
 import { Tour } from '@/data/tours';
 import { FlightDeal } from '@/types/flights';
 import { VisaPromo } from '@/types/visa';
+import { Visa } from '@/data/visa';
 
 /**
  * Props type covering all section variants.
  * Passes real data objects for each type of deal.
  */
-type TourSectionProps =
-  | {
-      type: 'tours';
-      sectionTitle: string;
-      items: Tour[];
-      seeMoreLink?: string;
-    }
-  | {
-      type: 'flights';
-      sectionTitle: string;
-      items: FlightDeal[];
-      seeMoreLink?: string;
-    }
-  | {
-      type: 'visas';
-      sectionTitle: string;
-      items: VisaPromo[];
-      seeMoreLink?: string;
-    };
+type TourSectionProps = {
+  type: "tours" | "flights" | "visas";
+  sectionTitle: string;
+  items: Tour[] | FlightDeal[] | VisaPromo[] | Visa[];
+  seeMoreLink: string;
+}
 
-/**
- * TourSection displays a section with a heading, a "See all" link,
- * and a responsive grid of cards for tours, flights, or visas.
- */
+
 const TourSection: React.FC<TourSectionProps> = ({
   type,
   sectionTitle,

@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { SOCIAL_LINKS } from '@/constants/socials';
-import { Mail } from 'lucide-react';
+
 
 export default function FloatingSocials() {
   return (
@@ -50,11 +50,17 @@ export default function FloatingSocials() {
         />
       </a>
       <a
-        href="mailto:info@digitalvoyage.com"
+        href="https://wa.me/254743524370"
         className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-accent transition-all hover:scale-110 shadow-lg"
-        aria-label="Email"
+        aria-label="whatsapp"
       >
-        <Mail size={20} />
+        <Image 
+          src={SOCIAL_LINKS.whatsapp.icon}
+          alt="WhatsApp"
+          width={20}
+          height={20}
+          className='bg-green-50'
+        />
       </a>
     </div>
   );

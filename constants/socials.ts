@@ -9,7 +9,7 @@ export const SOCIAL_LINKS = {
     height : 24
   },
   facebook: {
-    url: 'https://facebook.com/digitalvoyage',
+    url: 'https://web.facebook.com/profile.php?id=100089526312677', bg: 'bg-blue-600',
     icon: '/icons/facebook.svg',
     label: 'Follow on Facebook'
   },
