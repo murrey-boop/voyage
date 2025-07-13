@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import bcrypt from "bcrypt";
 
 // Helper to create or find a guest user
@@ -42,13 +43,22 @@ export async function POST(req: NextRequest) {
       // If using Clerk, find user by Clerk ID
       let dbUser = await prisma.user.findUnique({ where: { clerkId: clerkUserId } });
       if (!dbUser) {
-        // Optionally create the DB user if not found (with minimal info)
+        // Get full user data from Clerk
+        const clerkUser = await currentUser();
+        if (!clerkUser) {
+          return NextResponse.json({ error: "User not found" }, { status: 404 });
+        }
+
+        // Create the DB user with proper email from Clerk
         dbUser = await prisma.user.create({
           data: {
             clerkId: clerkUserId,
-            email: undefined, // Clerk user email not available here
-            name: "Clerk User",
+            email: clerkUser.emailAddresses[0]?.emailAddress || `${clerkUserId}@clerk.temp`,
+            name: clerkUser.firstName && clerkUser.lastName 
+              ? `${clerkUser.firstName} ${clerkUser.lastName}`
+              : clerkUser.username || "Clerk User",
             password: await bcrypt.hash(Date.now().toString(), 10), // random password, not usable
+            phoneNumber: clerkUser.phoneNumbers[0]?.phoneNumber || null
           },
         });
       }
@@ -74,7 +84,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ booking });
   } catch (error) {
-    console.error(error);
+    console.error("Booking API error:", error);
     return NextResponse.json({ error: "Failed to create booking" }, { status: 500 });
   }
 }
