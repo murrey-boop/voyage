@@ -210,7 +210,7 @@ model UploadedDocument {
   fileSize   Int
   fileType   String
   filePath   String
-  type        String          // e.g., 'passport', 'visa', 'flightItinerary', etc.
+  type        String          //'passport', 'visa', 'flightItinerary', etc.
   imagePreview Boolean?      @default(false)
   multiple   Boolean?       @default(false)
   imageUrl   String?
